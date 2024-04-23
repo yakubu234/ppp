@@ -1,0 +1,269 @@
+<style>
+    #cart {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#cart th, #cart td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#cart th {
+  background-color: #f2f2f2;
+}
+
+#cart tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#cart tbody tr:hover {
+  background-color: #ddd;
+}
+
+</style>
+
+<select id="items" onchange="addToCart()">
+    <option value="1">Item 1</option>
+    <option value="2">Item 2</option>
+    <option value="3">Item 3</option>
+  </select>
+  
+  <table id="cart">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+  <div>
+    <label>Sub-Total:</label>
+    <span id="subtotal">0</span>
+  </div>
+  <div>
+    <label>Tax:</label>
+    <input type="number" id="tax" value="0">
+  </div>
+  <div>
+    <label>Discount:</label>
+    <input type="number" id="discount" value="0">
+  </div>
+  <div>
+    <button onclick="calculateTotal()">Calculate Total</button>
+  </div>
+  
+  
+  <script src="assets/js/jquery.min.js"></script>
+  <script>
+ function addToCart() {
+  var select = document.getElementById("items");
+  var item = select.options[select.selectedIndex].text;
+  var price = select.options[select.selectedIndex].value; // Assuming price is the value attribute of options
+
+  var quantity = prompt("Enter quantity:", 1);
+  if (quantity === null || quantity === "" || isNaN(quantity) || quantity <= 0) {
+    return;
+  }
+
+  var totalPrice = price * quantity;
+
+  var tbody = document.querySelector("#cart tbody");
+  var newRow = tbody.insertRow();
+  newRow.innerHTML = `
+    <td>${item}</td>
+    <td>${price}</td>
+    <td contenteditable="true">${quantity}</td>
+    <td>${totalPrice}</td>
+    <td><button onclick="removeRow(this)">Remove</button></td>
+  `;
+}
+
+function removeRow(button) {
+  var row = button.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+function calculateTotal() {
+  var rows = document.querySelectorAll("#cart tbody tr");
+  var subTotal = 0;
+  rows.forEach(function(row) {
+    var quantity = parseInt(row.cells[2].textContent);
+    var price = parseFloat(row.cells[1].textContent);
+    subTotal += quantity * price;
+  });
+  var tax = parseFloat(document.getElementById("tax").value);
+  var discount = parseFloat(document.getElementById("discount").value);
+  var total = subTotal + subTotal * (tax / 100) - discount;
+  document.getElementById("subtotal").textContent = subTotal.toFixed(2);
+  alert("Total: " + total.toFixed(2));
+}
+
+
+  </script>
+
+<div class="col-xl-6">
+    <div class="card">
+      <div class="card-header pb-0">
+        <h3>Default calendar</h3>
+      </div>
+      <div class="card-body card-wrapper"> 
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="input-group main-inline-calender">
+              <input class="form-control mb-2" id="inline-calender" type="date">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cart-totals">
+    <p>Subtotal: $<span id="subTotal">0.00</span></p>
+    <p>Tax (10%): $<span id="tax">0.00</span></p>
+    <p>Discount: $<span id="discount">0.00</span> (Optional)</p>
+    <p><strong>Total: $<span id="total">0.00</span></strong></p>
+  </div>
+
+
+  <script>
+
+<div class="col-md-12"> 
+                        <table class="table table-bordered" id="consent_show_summary">
+                          <thead>
+                            <tr>
+                              <th colspan="7" class="text-center"> Preview of your booking infomation.</th>
+                            </tr>
+                            <tr>
+                              <td colspan="7" class="text-center"> <span class="text-danger" >Please </span> read the information below carefully to confirm they are correct, please tick the <span class="text-danger"> I agree</span> box to proceed or go to previous to edit your bookings.</td>
+                            </tr>
+                            <tr>
+                              <th colspan="7"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th>Client Name:</th>
+                              <td colspan="3"> Abiola Yakubu</td>
+                              <th>Client Number</th>
+                              <td colspan="2">0907989697798</t>
+                            </tr>
+
+                            <tr>
+                              <th>Client Email:</th>
+                              <td colspan="3"> Abiola Yakubu</td>
+                              <th>Event Type</th>
+                              <td colspan="2">Pre Engagement</t>
+                            </tr>
+                            
+                            <tr>
+                              <th>Booking From:</th>
+                              <td colspan="3"> 09/06/1996</td>
+                              <th>Booking To</th>
+                              <td colspan="2">Pre Engagement</t>
+                            </tr>
+
+                            <tr>
+                              <th >Number of Guest:</th>
+                              <td colspan="3"> 09/06/1996</td>
+                              <th>Apply Date</th>
+                              <td colspan="2">Pre Engagement</t>
+                            </tr>
+                            <tr>
+                              <th >Message (if any)?</th>
+                              <td colspan="6"> 09/06/1996</td>
+                            </tr>
+
+                            <tr>
+                              <th colspan="7"></th>
+                            </tr>
+
+                            <tr>
+                              
+                            <th colspan="2">Service Name: <b><i>Boot Hire</i></b></th>
+                              <th> Desc</th>
+                              <td>Pre Engagement, we will give you everything</t>
+                              <th> Price : 80000</th>
+                              <th>Qty:  1</th>
+                              <th>subtotal:  2390339</th>
+                            </tr>
+                            <tr>
+                              
+                            <th colspan="2">Service Name: <b><i>Boot Hire</i></b></th>
+                              <th> Desc</th>
+                              <td>Pre Engagement, we will give you everything</t>
+                              <th> Price : 80000</th>
+                              <th>Qty:  1</th>
+                              <th>subtotal:  2390339</th>
+                            </tr>
+                            <tr>
+                              <th colspan="2">Service Name: <b><i>Boot Hire</i></b></th>
+                              <th> Desc</th>
+                              <td>Pre Engagement, we will give you everything</t>
+                              <th> Price : 80000</th>
+                              <th>Qty:  1</th>
+                              <th>subtotal:  2390339</th>
+                            </tr>
+
+                            
+                            <tr>
+                              <th colspan="7"></th>
+                            </tr>
+
+                            <tr>
+                              <th colspan="4"></th>
+                              <th> Sub Total</th>
+                              <td colspan="2">203490</t>
+                            </tr>
+                            <tr>
+                              <th colspan="4"></th>
+                              <th> Tax</th>
+                              <td colspan="2">203490</t>
+                            </tr>
+                            <tr>
+                              <th colspan="4"></th>
+                              <th> Discount</th>
+                              <td colspan="2">203490</t>
+                            </tr>
+                            <tr>
+                              <th colspan="4"></th>
+                              <th> Total</th>
+                              <td colspan="2">203490</t>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+
+
+var tbody = document.querySelector("#cart tbody");
+        var newRow = tbody.insertRow(); 
+        // Set the data-id attribute to the selected item ID for the row
+        newRow.setAttribute("data-id", selected_id);
+
+        // by default quantity is 1 and price will be used to calculate 
+        let totalPrice = parseFloat(1 * selectedItem.price).toFixed(2);
+        newRow.innerHTML = `
+          <td></td>  
+          <td>${selectedItem.name}</td>
+          <td><input type="hidden" id="item_price_`+selectedItem.id+`"  value="`+selectedItem.price+`" name="price[]" />
+          &#x20A6;${selectedItem.price}</td>
+          <td>
+            <input type="hidden" name="item_id[]" value="`+selectedItem.id+`" />
+            <input type="hidden" value="1" id="quantity_original_`+selectedItem.id+`" name="quantity[]" />
+            <input type="number" min="1" value="1" id="quantity_calc_`+selectedItem.id+`"  oninput="handleQuantityChange(this.id, this.value)" />
+          </td>
+          <td> &#x20A6;<span id="span_`+selectedItem.id+`">${totalPrice}</span></td>
+          <td><button class="btn btn-square btn-danger" onclick="removeRow(this)" title="delete" type="button"><i class="fa fa-trash-o"></i></button> </td>
+        `; 
+
+  </script>

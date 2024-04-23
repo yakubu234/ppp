@@ -1,0 +1,8 @@
+software/api.php?name=calendar   get
+
+software/api.php?name=gallery   get
+
+software/api.php?name=contact_message   post   email, name, subject and message
+
+
+software/api.php?name=book_now   post   email, date, fullname 
