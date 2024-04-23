@@ -4,24 +4,17 @@ error_reporting(E_ALL);
 
 
 $userId =$_SESSION['obbsuid'] ;
-$status = "enabled";
-if(isset($_GET['id'])){
-    $id = $_GET['id'];
     // Fetch user data based on email
-    $sql = "SELECT * FROM bookings WHERE bookign_id=:id";
+    $sql = "SELECT * FROM agreement";
     $query = $dbh->prepare($sql);
-    $query->bindParam(':id', $id, PDO::PARAM_STR);
     $query->execute();
 
-    $bookingInfo = $query->fetch(PDO::FETCH_ASSOC);
-    
-}
+    $service = $query->fetch(PDO::FETCH_ASSOC);
+  
+
 // Access the count using the key 'total_bookings
 include('../../includes/header.php'); 
 
-if(isset($_POST['']) ){
-
-}
 ?>
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
@@ -42,7 +35,7 @@ if(isset($_POST['']) ){
             <div class="page-title">
               <div class="row">
                 <div class="col-sm-6 ps-0">
-                  <h3>Approve Booking</h3>
+                  <h3>Base Inputs</h3>
                 </div>
                 <div class="col-sm-6 pe-0">
                   <ol class="breadcrumb">
@@ -63,45 +56,20 @@ if(isset($_POST['']) ){
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header pb-0">
-                    <h3>Approval form</h3>
+                    <h3>Basic form</h3>
                     <p class="f-m-light mt-1">
-                       Approve the below booking</p>
+                       Agrrement details are below..</p>
                   </div>
                   <div class="card-body">
                     <div class="card-wrapper border rounded-3">
-                      <form class="row g-3" method="POST" action="../../handler/approve.add.edit.php">
-                        <input type="hidden" value="<?php echo isset($bookingInfo['id'])? $bookingInfo['id']:""; ?>" name="item_id" />
-                        <input type="hidden" value="<?php echo isset($bookingInfo['bookign_id'])? $bookingInfo['bookign_id']:""; ?>" name="booking_id" />
+                      <form class="row g-3" method="POST" action="../../handler/agreement.php">
+                        <input type="hidden" value="<?php echo isset($service['id'])? $service['id']:""; ?>" name="item_id" />
+                        
                         <div class="col-md-12">
-                          <label class="form-label" for="inputEmail4">Booking Type</label>
-                          <input class="form-control" required id="inputEmail4" value="<?php echo isset($bookingInfo['event_type'])? $bookingInfo['event_type']:""; ?>"  required name="type" type="text" readonly placeholder="Enter Service Name">
+                          <label class="form-label" for="Description">Enter Agreement Description</label>
+                          <textarea class="form-control" row="10" id="Description" name="description" required placeholder="Enter Descriptionl"><?php echo isset($service['description'])? $service['description']:""; ?></textarea>
                         </div>
-                        <div class="col-md-12">
-                          <label class="form-label" for="inputEmail4">Date </label>
-                          <input class="form-control" required id="inputEmail4" value="<?php echo isset($bookingInfo['date_start'])? $bookingInfo['date_start']:""; ?>"  required name="start_date" type="text" readonly placeholder="Enter Service Name">
-                        </div>
-
-
-
-                        <div class="col-md-12">
-                          <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlSelect7">Select Status</label>
-                            <select class="form-control" id="exampleFormControlSelect7" required name="status">
-                                <?php if(isset($bookingInfo['status'])){
-                                    echo '
-                                    <option value="'.$bookingInfo['status'].'" selected readonly>'.$bookingInfo['status'].'</option>';
-                                }else{
-                                    echo '
-                                    <option selected readonly>Select Status</option>';
-                                }
-                                
-                                ?>
-                              <option value="approved">approve</option>
-                              <option value="declined">decline</option>
-                            </select>
-                          </div>
-                        </div>
-
+                        
 
                         <div class="col-12">
                           <button class="btn btn-primary" type="submit">Submit </button>

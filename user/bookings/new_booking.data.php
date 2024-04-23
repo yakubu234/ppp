@@ -19,5 +19,12 @@ $queryEventTypes->bindParam(':status', $status, PDO::PARAM_STR);
 $queryEventTypes->execute();
 $eventTypes = $queryEventTypes->fetchAll(PDO::FETCH_ASSOC);
 
+$status = "active";
+$sql = "SELECT * FROM users WHERE status=:status";
+$query = $dbh->prepare($sql);
+$query->bindParam(':status', $status, PDO::PARAM_STR);
+$query->execute();
+$listUsers = $query->fetchAll(PDO::FETCH_ASSOC);
+
 include('new_booking.php');
 ?>

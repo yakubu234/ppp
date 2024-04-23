@@ -74,14 +74,11 @@
                                   <td>&#x20A6;'.$service['price'].'</td>
                                   <td> 
                                   <ul class="action">
-                                      <li class="edit"><a href="new_booking.data.php"><button class="btn btn-primary"><i class="icofont icofont-book-mark" style="color: white;"></i> BOOK NOW</button> </a></li>';
-
-                                      if($currentUser['type'] > 0){                                      
+                                      <li class="edit"><a href="new_booking.data.php"><button class="btn btn-primary"><i class="icofont icofont-book-mark" style="color: white;"></i> BOOK NOW</button> </a></li> 
                                   
-                                      echo '<li class="edit"><a href="services.edit.php?id='.$service['id']."_".uniqid().'"><button class="btn btn-primary"><i class="icofont  icofont-edit" style="color: white;"></i></button> </a></li>
+                                      <li class="edit"><a href="services.edit.php?id='.$service['id']."_".uniqid().'"><button class="btn btn-primary"><i class="icofont  icofont-edit" style="color: white;"></i></button> </a></li>
 
-                                      <li class="edit"><a title="Disable User" href="message.view.data.php/'.$service['id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i></button> </a></li>';
-                                    }
+                                      <li class="edit"><a title="Disable User" href="services.edit.php?id='.$service['id']."_".uniqid().'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i></button> </a></li>';
                                       
                                       echo' 
                                   </ul>

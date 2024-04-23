@@ -41,7 +41,7 @@
                   <div class="card-header">
                     <form class="theme-form">
                       <div class="input-group m-0 flex-nowrap">
-                        <input class="form-control-plaintext" type="search" placeholder="Enter Booking code, your email, or your phone .." id="search_field"><span class="btn btn-primary input-group-text" onclick="searchBookings()">Search</span>
+                        <input class="form-control-plaintext" type="search" placeholder="Enter Booking code, your email, or your phone or date in(15/12/2024) format" id="search_field"><span class="btn btn-primary input-group-text" onclick="searchBookings()">Search</span>
                       </div>
                     </form>
                   </div>

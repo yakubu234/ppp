@@ -1,12 +1,19 @@
 <?php 
 include("conn/database.php");
-error_reporting(E_ALL);
+error_reporting(0);
+
+function formatTimeWithSeconds($timeString) {
+
+  $formattedTime = substr($timeString,0, -3);
+  // Append ":00" for seconds
+  return $formattedTime . ':00';
+}
 
 
 function formatDates($dateArray) {
     foreach ($dateArray as &$item) {
         $dateStart = DateTime::createFromFormat('l, F j, Y', $item['date_start']);
-        $dateEnd = DateTime::createFromFormat('l, F j, Y', $item['date_end']);
+        $dateEnd = DateTime::createFromFormat('l, F j, Y', $item['date_start']);
 
         $item['date_start'] = $dateStart->format('m/d/Y');
         $item['date_end'] = $dateEnd->format('m/d/Y');
@@ -18,10 +25,10 @@ function formatDatesInternal($dateArray) {
     $data2 = [];
     foreach ($dateArray as &$item) {
         $dateStart = DateTime::createFromFormat('l, F j, Y', $item['date_start']);
-        $dateEnd = DateTime::createFromFormat('l, F j, Y', $item['date_end']);
+        $dateEnd = DateTime::createFromFormat('l, F j, Y', $item['date_start']);
 
-        $data['start'] = $dateStart->format('Y-m-d'). 'T06:30:00';
-        $data['end'] = $dateEnd->format('Y-m-d'). 'T23:30:00';
+        $data['start'] = $dateStart->format('Y-m-d'). ' T'.formatTimeWithSeconds($item['time_start']);
+        $data['end'] = $dateEnd->format('Y-m-d'). ' T'. formatTimeWithSeconds($item['time_end']);
         $data['title'] = "Booked";
         $data2[] = $data;
     }
@@ -31,7 +38,7 @@ function formatDatesInternal($dateArray) {
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['name']) && $_GET['name'] == 'calendar_internal') {
 
     $currentDate = date('l, F j, Y'); // Get the current date in the same format as stored in the database
-    $sql = "SELECT date_start, date_end FROM bookings WHERE STR_TO_DATE(date_start, '%W, %M %e, %Y') >= STR_TO_DATE(:currentDate, '%W, %M %e, %Y')";
+    $sql = "SELECT date_start, time_start, time_end FROM bookings WHERE STR_TO_DATE(date_start, '%W, %M %e, %Y') >= STR_TO_DATE(:currentDate, '%W, %M %e, %Y')";
     $query = $dbh->prepare($sql);
     $query->bindParam(':currentDate', $currentDate, PDO::PARAM_STR);
     if($query->execute()){

@@ -73,9 +73,9 @@
                                 echo '
                                 <tr>
                                   <td>#'.$booking['bookign_id'].'</td>
-                                  <td><span class="badge rounded-pill badge-light-info">'.$booking['event_type'].'</span></td>
-                                  <td> <span class="badge rounded-pill badge-primary"> '.$booking['date_start'].  " from ". $booking['time_start'].' to '.$booking['time_end'].'</span></td>
-                                  <td> <span class="badge rounded-pill badge-info">'.$booking['number_of_guest'].'</span></td>';
+                                  <td><span class="">'.$booking['event_type'].'</span></td>
+                                  <td> <span class=""> <b>'.$booking['date_start'].  " from ". $booking['time_start'].' to '.$booking['time_end'].'</b></span></td>
+                                  <td> <span class="">'.$booking['number_of_guest'].'</span></td>';
                                 $bookingStatus =' <span class="badge rounded-pill badge-primary">Under Review</span>'; 
                                   if($booking['status'] == 'approved') $bookingStatus =' <span class="badge rounded-pill badge-success">'.$booking['status'].'</span>'; 
                                   if($booking['status'] == 'declined') $bookingStatus =' <span class="badge rounded-pill badge-danger">'.$booking['status'].'</span>'; 

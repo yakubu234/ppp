@@ -106,13 +106,34 @@
                           <input class="form-control" id="firstnamewizard" name="customer_contact_person_phone"  type="text" required="" placeholder="Enter customer phone ">
                         </div>
 
-                        <!-- un coppy from here -->
-
+                        <!-- <div class="col-sm-12"> 
+                        <label class="form-label" for="userSelect_item">Select User name<span class="txt-danger">*(must be selected to get the users details)</span></label>
+                                  <select class="form-select" id="userSelect_item" name="type_of_event" required="" aria-label="select example">
+                                    <option value="">Select User by Full namet </option>
+                                    <?php
+                                      //if($listUsers){
+                                       // foreach($listUsers as $listUser){
+                                       //   echo '<option value="'.$listUser['id'].'"> '.$listUser['fullname'].' //</option>';
+                                       // }
+                                      //}
+                                    ?>
+                                  </select>
+                                  <div class="invalid-feedback">Invalid select feedback</div>
+                                </div>
+ -->
+                      <!--   <div class="col-sm-6">
+                          <label class="form-label" for="select_email">Email<span class="txt-danger">*(will be populated when you select a user)</span></label>
+                          <input class="form-control" id="select_email" readonly name="email"  type="email" required="" placeholder="sample@gmail.com">
+                        </div>
+                        <div class="col-sm-6">
+                          <label class="form-label" for="select_fullname">Fullame<span class="txt-danger">*(will be populated when you select a user)</span></label>
+                          <input class="form-control" id="select_fullname" name="fullname" readonly type="text" required="" placeholder="Enter your name">
+                        </div> -->
 
                         <div class="col-sm-6"> 
                         <label class="form-label" for="firstnamewizard">Select Type  of Event<span class="txt-danger">*</span></label>
                                   <select class="form-select" name="type_of_event" required="" aria-label="select example">
-                                    <option value="">Select Type of Event </option>
+                                    <option value="">Select Type f Event </option>
                                     <?php
                                       if($eventTypes){
                                         foreach($eventTypes as $eventType){
@@ -139,7 +160,7 @@
                             <div class="card-body card-wrapper"> 
                               <div class="row g-3">
                                 <div class="col-12">
-                                  <div class="input-group ">
+                                  <div class="input-group main-inline-calender">
                                     <input class="form-control mb-2" required name="from" id="inline-calender" type="date">
                                   </div>
                                 </div>
@@ -151,20 +172,43 @@
 
                         <!-- from date -->
                         <div class="col-xl-6">
-                          <div class="card">
+                          <div class="row" >
+                            <div class="col-sm-12" >
+                              <div class="card">
                             <div class="card-header pb-0">
-                            <label class="form-label" for="email-basic-wizard">To Date<span class="txt-danger">*</span></label>
+                            <label class="form-label" for="email-basic-wizard">Start Time<span class="txt-danger">*</span></label>
                             </div>
                             <div class="card-body card-wrapper"> 
                               <div class="row g-3">
                                 <div class="col-12">
                                   <div class="input-group ">
-                                    <input class="form-control mb-2"  name="to" required id="inline-calender" type="date">
+                                    <input class="form-control mb-2"  name="time_start" type="time">
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
+                            </div>
+                          </div>
+                          <div class="row" >
+                            <div class="col-sm-12" >
+                              <div class="card">
+                            <div class="card-header pb-0">
+                            <label class="form-label" for="email-basic-wizard">End Time<span class="txt-danger">*</span></label>
+                            </div>
+                            <div class="card-body card-wrapper"> 
+                              <div class="row g-3">
+                                <div class="col-12">
+                                  <div class="input-group ">
+                                    <input class="form-control mb-2"  name="time_end" type="time">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                            </div>
+                          </div>
+
                         </div>
                         <!-- to date -->
                         
@@ -231,10 +275,10 @@
                           <div class="col-sm-3"></div>
                           
                         <div class="cart-totals col-sm-4">
-                          <p>Subtotal: &#x20A6;<span id="subTotal">0.00</span></p>
+                          <p>Subtotal: <span id="subTotal">0.00</span></p>
                           <p>Tax (0%): &#x20A6;<span id="tax">0.00</span></p>
-                          <p>Discount: &#x20A6;<span id="discount">0.00</span> (Optional)</p>
-                          <p><strong>Total: &#x20A6;<span id="final_total">0.00</span></strong></p>
+                          <p>Discount: <span id="discount">0.00</span> (Optional)</p>
+                          <p><strong>Total: <span id="final_total">0.00</span></strong></p>
                         </div>
                         </div>
                         </div>
@@ -429,7 +473,83 @@
     <!-- Plugin used-->
     <script>
       var all_services = <?php echo json_encode($services); ?>;
+      var full_user_list = <?php echo json_encode($listUsers); ?>;
       
+      const userSelect = document.getElementById('userSelect_item');
+  const userEmailElement = document.getElementById('select_email'); // Assuming you have an element for user email
+  const userFullnameElement = document.getElementById('select_fullname'); // Assuming you have an element for user email
+  const userIdElement = document.getElementById('select_id'); // Assuming you have an element for user email
+  const userPhoneElement = document.getElementById('select_phone'); // Assuming you have an element for user phone number
+
+  // userSelect.onchange = function() { // Using onchange event
+  //   const selectedUserId = this.value; 
+
+  //         // Check if a user is selected
+  //         if (selectedUserId) {
+  //           // Find the selected user object from the listUsers array (assuming you have it in JavaScript)
+  //           const selectedUser = full_user_list.find(user => user.id === Number(selectedUserId));
+  //           if (selectedUser) {
+  //             console.log(selectedUser)
+  //             // Update email and phone number elements
+  //             userFullnameElement.value = selectedUser.fullname;
+  //             userIdElement.value = selectedUser.id; // Assuming 'email' is a property in listUsers objects
+  //             userEmailElement.value = selectedUser.email; // Assuming 'email' is a property in listUsers objects
+  //             userPhoneElement.value = selectedUser.phone; // Assuming 'phone_number' is a property
+  //           } else {
+  //             // Handle case where no user object is found (optional)
+  //             console.error("Selected user not found in listUsers");
+  //           }
+  //         } else {
+  //           // Handle case where no user is selected (optional)
+  //           userEmailElement.textContent = '';
+  //           userPhoneElement.textContent = '';
+  //         }
+  //       };
+
+      function removeCommas(formattedAmount) {
+        // """
+        // Removes commas from a formatted naira string.
+
+        // Args:
+        //     formattedAmount: The formatted naira string with commas.
+
+        // Returns:
+        //     The original number without commas as a float.
+        // """
+
+        // Replace commas with an empty string using regular expression
+        const amountWithoutCommas = formattedAmount.replace(/,/g, "");
+
+        // Convert the string to a float for calculations
+        return parseFloat(amountWithoutCommas);
+      }
+
+      function formatMoney(amount) {
+            // Handle negative values (optional)
+          const sign = amount < 0 ? "-" : "";
+          const absoluteAmount = Math.abs(amount);
+
+          // Check if amount is less than 4 digits, no need for formatting
+          if (absoluteAmount.toString().length < 4) {
+            return sign + "₦"+ absoluteAmount+".00";
+          }
+
+          // Extract millions (if any)
+          const millions = Math.floor(absoluteAmount / 1000000);
+          const remaining = absoluteAmount % 1000000;
+
+          // Format remaining amount with commas using toLocaleString (handles locale-specific formatting)
+          const formattedRemaining = remaining.toLocaleString('en-NG', {
+            style: 'currency',
+            currency: 'NGN',
+            minimumFractionDigits: 2, // Optional: Specify minimum decimal places
+          });
+
+          // Combine millions and remaining parts
+          const formattedAmount = sign + (millions > 0 ? millions.toLocaleString('en-NG', { style: 'decimal' }) + ',' : '') + formattedRemaining;
+
+          return formattedAmount;
+      }
       // all_services = JSON.parse(fullServices);
       function addToCart() {
         var select = document.getElementById("exampleFormControlSelect17");
@@ -458,7 +578,8 @@
         newRow.setAttribute("data-id", selected_id);
 
         // by default quantity is 1 and price will be used to calculate 
-        let totalPrice = parseFloat(1 * selectedItem.price).toFixed(2);
+        let totalPrice = parseFloat(1 * removeCommas(selectedItem.price)).toFixed(2);
+        totalPrice = formatMoney(totalPrice);
         newRow.innerHTML = `
           <td></td>  
           <td>${selectedItem.name}</td>
@@ -469,7 +590,7 @@
             <input type="hidden" value="1" id="quantity_original_`+selectedItem.id+`" name="quantity[]" />
             <input type="number" min="1" value="1" id="quantity_calc_`+selectedItem.id+`"  oninput="handleQuantityChange(this.id, this.value)" />
           </td>
-          <td> &#x20A6;<span id="span_`+selectedItem.id+`">${totalPrice}</span></td>
+          <td> <span id="span_`+selectedItem.id+`">${totalPrice}</span></td>
           <td><button class="btn btn-square btn-danger" onclick="removeRow(this)" title="delete" type="button"><i class="fa fa-trash-o"></i></button> </td>
         `; 
         updateSerialNumbers();
@@ -495,10 +616,11 @@
       function handleQuantityChange(id, value) {
         var itemId = id.split("_")[2];
         let unit_price = document.getElementById("item_price_"+itemId).value;
+        unit_price = removeCommas(unit_price)
         let total_price = document.getElementById("span_"+itemId);
         let original_qty_field = document.getElementById("quantity_original_"+itemId).value = value;
         let new_price = parseFloat(value * unit_price).toFixed(2);
-        total_price.textContent =new_price;
+        total_price.textContent =formatMoney(new_price);
 
         calculateTotal();
       }
@@ -509,22 +631,33 @@
         // Loop through each span
         spans.forEach(function(span) {
             // Get the text content of the span and convert it to a number
-            var value = parseFloat(span.textContent);
+            const spanVal = span.textContent.replace(/^\₦+/, ""); // remove the naira sign in multiple places available
+            newSpanVal = removeCommas(spanVal);
+            var value = parseFloat(newSpanVal);
             // Add the value to the total
             subTotal += value;
         });
 
         // var tax = parseFloat(document.getElementById("tax").value);
         var tax = 0;
-        let discount_field = document.getElementById("discount_field").value;
-        var discount = (discount_field === null || discount_field === "") ? 0.0:parseFloat(discount_field) ;
+        let discount =  0.00;
+        let discountField = document.getElementById("discount_field").value;
+        if (discountField === null || discountField === "") {
+            
+        }else{
+            discount = removeCommas(discountField)
+        }
 
+        // if tax matters is raised, solve it here
         var total = tax > 0 ? ((subTotal * (tax / 100)) - discount): (subTotal  - discount);
-        console.log(total)
 
-        document.getElementById("subTotal").textContent = subTotal.toFixed(2);
-        document.getElementById("discount").textContent = discount.toFixed(2);
-        document.getElementById("final_total").textContent = total.toFixed(2);
+        let newsubtotal = subTotal.toFixed(2);
+        let newDiscount = discount.toFixed(2);
+        let newTotal = total.toFixed(2);
+
+        document.getElementById("subTotal").textContent = formatMoney(newsubtotal);
+        document.getElementById("discount").textContent = formatMoney(newDiscount);
+        document.getElementById("final_total").textContent = formatMoney(newTotal);
       }
 
       // grabs all the form datas inside the nexted tabs
@@ -553,6 +686,7 @@
         })
         .then(response => {
           if (response.ok) {
+            console.log(response)
             return response.json();
           } else {
             throw new Error('Failed to submit form');
@@ -563,6 +697,7 @@
             // Handle successful response
             formatConsentToDisply(data.data)
           } else {
+            console.log(data)
             // Handle error response
             console.log('Error: ' + data.message);
           }
@@ -583,7 +718,6 @@
         })
         .then(response => {
           if (response.ok) {
-            window.location = "" //redirect to the page.
             return response.json();
           } else {
             throw new Error('Failed to submit form');
@@ -610,25 +744,30 @@
         var tbody = document.querySelector("#consent_show_summary tbody");
         // var newRow = tbody.insertRow();
         let messgae = (data.message == "" ||  data.message == false) ? 'N/A':data.message ;
-           let new_table = '<tr><th>Client Name:</th> <td colspan="3"> '+data.customer_fullname+'</td> <th>Client Number</th>  <td colspan="2"> '+data.customer_phone+'</td> </tr><tr><th>Client Email:</th> <td colspan="3">  '+data.customer_email+'</td><th>Customer  Address</th> <td colspan="2"> '+data.customer_address+'</td> </tr><tr><th>Contact person  Name:</th> <td colspan="3">  '+data.customer_contact_person_fullname+'</td><th>Contact Person Phone </th> <td colspan="2"> '+data.customer_contact_person_phone+'</td> </tr><tr><th>Booking Stauts:</th> <td colspan="3">  pending</td><th>Event Type</th> <td colspan="2"> '+data.type_of_event+'</td> </tr> <tr><th>Booking From:</th> <td colspan="3"> '+data.from+'</td> <th>Booking To</th>  <td colspan="2"> '+data.to+'</td></tr><tr><th >Number of Guest:</th><td colspan="3"> '+data.number_of_guest+'</td> <th>Apply Date</th>  <td colspan="2">'+data.apply_date+'</td></tr><tr><th >Message (if any)?</th><td colspan="6"> '+messgae+'</td> </tr> <tr><th colspan="7"></th> </tr>';
+        let new_table = '<tr><th>Client Name:</th> <td colspan="3"> '+data.customer_fullname+'</td> <th>Client Number</th>  <td colspan="2"> '+data.customer_phone+'</td> </tr><tr><th>Client Email:</th> <td colspan="3">  '+data.customer_email+'</td><th>Customer  Address</th> <td colspan="2"> '+data.customer_address+'</td> </tr><tr><th>Contact person  Name:</th> <td colspan="3">  '+data.customer_contact_person_fullname+'</td><th>Contact Person Phone </th> <td colspan="2"> '+data.customer_contact_person_phone+'</td> </tr><tr><th>Booking Stauts:</th> <td colspan="3">  pending</td><th>Event Type</th> <td colspan="2"> '+data.type_of_event+'</td> </tr> <tr><th>Booking Date:</th> <td colspan="3"> '+data.from+'</td> <th>Time</th>  <td colspan="2"> '+data.time_start+' to '+data.time_end+'</td></tr><tr><th >Number of Guest:</th><td colspan="3"> '+data.number_of_guest+'</td> <th>Apply Date</th>  <td colspan="2">'+data.apply_date+'</td></tr><tr><th >Message (if any)?</th><td colspan="6"> '+messgae+'</td> </tr> <tr><th colspan="7"></th> </tr>';
 
         var services = data.services;
         var sub_total;let pre_total = 0.0;
         services.forEach(function(service, index) {
-          sub_total = parseFloat(service.quantity * service.price).toFixed(2);
+
+          sub_total = parseFloat(service.quantity * removeCommas(service.price)).toFixed(2);
             pre_total = (parseFloat(pre_total)+parseFloat(sub_total)); 
-            new_table += '<th colspan="2">Service Name: <b><i>'+service.service_name+'</i></b></th><th> Desc</th><td>'+service.service_description+'</td><th> Price : &#x20A6; '+service.price+'</th><th>Qty:  '+service.quantity+'</th><th>Sub Total: &#x20A6; '+sub_total+'</th> </tr>';
+            let formatedSubTotal = formatMoney(sub_total)
+            new_table += '<th colspan="2">Service Name: <b><i>'+service.service_name+'</i></b></th><th> Desc</th><td>'+service.service_description+'</td><th> Price : &#x20A6; '+service.price+'</th><th>Qty:  '+service.quantity+'</th><th>Sub Total: '+formatedSubTotal+'</th> </tr>';
           });
 
-          let discount =  (data.discount == null || data.discount == "" ||  data.discount == false)? 0.0:parseFloat(data.discount) ;
-          let tax =  (data.tax == null || data.tax == "" ||  data.tax == false)? 0.0:parseFloat(data.tax) ;
+          let discount =  (data.discount == null || data.discount == "" ||  data.discount == false)? 0.0:parseFloat(removeCommas(data.discount)) ;
+          let tax =  (data.tax == null || data.tax == "" ||  data.tax == false)? 0.0:parseFloat(removeCommas(data.tax));
           pre_total = parseFloat(pre_total).toFixed(2);
 
           var final_total = tax > 0 ? (pre_total - tax ) - discount : (pre_total - discount);
           final_total = parseFloat(final_total).toFixed(2);
 
-          
-        new_table +=`<tr> <th colspan="7"></th></tr> <tr> <th colspan="4"></th> <th> Sub Total</th> <td colspan="2"> &#x20A6;${pre_total}</td> </tr> <tr><th colspan="4"></th> <th> Tax</th><td colspan="2">&#x20A6;${tax}</td> </tr><tr><th colspan="4"></th> <th> Discount</th><td colspan="2">&#x20A6;${discount}</td></tr> <tr><th colspan="4"></th> <th> Total</th> <td colspan="2">&#x20A6;${final_total}</td> </tr>`;
+          let new_final_tax = formatMoney(tax);
+          let new_final_pretotal = formatMoney(pre_total);
+          let new_final_discount = formatMoney(discount);
+          let new_final_total = formatMoney(final_total);
+        new_table +=`<tr> <th colspan="7"></th></tr> <tr> <th colspan="4"></th> <th> Sub Total</th> <td colspan="2">${new_final_pretotal}</td> </tr> <tr><th colspan="4"></th> <th> Tax</th><td colspan="2">${new_final_tax}</td> </tr><tr><th colspan="4"></th> <th> Discount</th><td colspan="2">${new_final_discount}</td></tr> <tr><th colspan="4"></th> <th> Total</th> <td colspan="2">${new_final_total}</td> </tr>`;
         tbody.innerHTML = new_table;
       }
 

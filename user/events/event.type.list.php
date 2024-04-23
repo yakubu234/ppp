@@ -96,7 +96,7 @@ include('../../includes/header.php'); ?>
                                   
                                       <li class="edit"><a href="event.type.add.edit.php?id='.$event_type['id']."_".uniqid().'"><button class="btn btn-primary"><i class="icofont  icofont-edit" style="color: white;"></i></button> </a></li>
 
-                                      <li class="edit"><a title="Disable User" href="event.type.add.edit.php/'.$event_type['id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i></button> </a></li>';
+                                      <li class="edit"><a title="Disable User" href="event.type.add.edit.php?id='.$event_type['id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i></button> </a></li>';
                                       
                                       echo' 
                                   </ul>
