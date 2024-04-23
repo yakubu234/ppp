@@ -66,6 +66,69 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     echo 'you acidentally viewed this page';
 }
 
+
+function addCommasToMoney($amount)
+{
+    return $amount;
+    // return number_format($amount);
+
+  if(strlen($amount) < 4){
+    return $amount;
+  }
+     /*"""
+  Formats a number as Nigerian naira with commas for thousands separators.
+
+  Args:
+      amount: The number to format (float or int).
+
+  Returns:
+      A string representing the formatted naira value.
+  """*/
+
+    $amount = floatval($amount);
+
+  // Handle negative values (optional)
+  if ($amount < 0) {
+    $sign = "-";
+    $amount = abs($amount);
+  } else {
+    $sign = "";
+  }
+
+  // Extract millions (if any)
+  $millions = intval($amount / 1000000);
+  $remaining = $amount % 1000000;
+
+  // Format remaining amount with commas
+  $formatted_remaining = number_format($remaining, 2, '.', ','); // Use number_format for commas
+
+  // Combine millions and remaining parts
+  $formatted_amount = $sign . ($millions > 0 ? number_format($millions, 0, '', ',') . ',' : '') . $formatted_remaining;
+
+  // Remove trailing decimal zeros (optional)
+  $formatted_amount = rtrim($formatted_amount, '.0');
+
+  return $formatted_amount;
+}
+
+function remove_commas($formatted_amount) {
+  /*"""
+  Removes commas from a formatted naira string.
+
+  Args:
+      formatted_amount: The formatted naira string with commas.
+
+  Returns:
+      The original number without commas as a float.
+  """*/
+
+  // Replace commas with empty string
+  $amount_without_commas = str_replace(',', '', $formatted_amount);
+
+  // Convert back to float for calculations
+  return floatval($amount_without_commas);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -202,7 +265,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                             <table class="invoice-table train-table">
                                 <thead>
                                     <tr class="invo-tb-header">
-                                        <th class="font-md color-light-blackwid-20">Service Name</th>
+                                        <th class="font-md color-light-black wid-20">Service Name</th>
                                         <th class="font-md color-light-black w-40">Description</th>
                                         <th class="font-md color-light-black width-20">Qty X Price</th>
                                         <th class="font-md color-light-black wid-20">Total</th>
@@ -212,12 +275,16 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                                     <?php 
                                     $amountSubtotal = 0.00;
                                     foreach($data['services'] as $key => $value){
-                                        $amountSubtotal = ($amountSubtotal + ($value["quantity"]*$value["price"]));
+
+                                        $amountSubtotal = (remove_commas($amountSubtotal) + ($value["quantity"]*remove_commas($value["price"])));
+                                        $price_with_comma = addCommasToMoney($value["price"]);
+                                        $pre_sum = addCommasToMoney(($value["quantity"]*remove_commas($value["price"])));
+                                        $rapped = wordwrap($value["service_description"], 50, "<br />\n", true);
                                         echo '<tr class="invo-tb-row">
                                                 <td class="font-sm">&nbsp; '.$value["service_name"].'</td>
-                                                <td class="font-sm">&nbsp; '.$value["service_description"].'</td>
-                                                <td class="font-sm ">&nbsp; '.$value["quantity"].' x &#8358;'.$value["price"].'</td>
-                                                <td class="font-sm ">&nbsp; &#8358;'.($value["quantity"]*$value["price"]).'</td>
+                                                <td class="font-sm">&nbsp; '. $rapped.'</td>
+                                                 <td class="font-sm ">&nbsp; '.$value["quantity"].' x &#8358;'.$price_with_comma.'</td>
+                                                <td class="font-sm ">&nbsp; &#8358;'.$pre_sum.'</td>
                                             </tr>';
                                         }
                                      ?> 
@@ -252,7 +319,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
                                             <tr class="tax-row bottom-border">
                                             <td class="font-md color-light-black ">Discount <span class="font-md color-grey"></span></td>
-                                            <td class="font-md-grey color-grey text-right">&#8358; <?php echo !empty($data['discount']) == true ? '-'.$data['discount']:"" ; ?></td>
+                                            <td class="font-md-grey color-grey text-right">&#8358; <?php echo !empty($data['discount']) == true ? '-'.addCommasToMoney($data['discount']):"" ; ?></td>
                                         </tr>
                                         <?php
                                         }
@@ -260,12 +327,12 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                                         
                                         <?php
 
-                                        $discount = empty($data['discount']) == true? 0.0:$data['discount'];
+                                        $discount = empty($data['discount']) == true? 0.0:remove_commas($data['discount']);
                                         $total = $discount == 0 ? ($amountSubtotal):($amountSubtotal - $discount);
                                         ?>
                                         <tr class="invo-grand-total">
                                             <td class="font-18-700 color-train font-18-500 pt-20">Grand Total:</td>
-                                            <td class="font-18-500 color-light-black pt-20 text-right">&#8358;<?php echo $total; ?></td>
+                                            <td class="font-18-500 color-light-black pt-20 text-right">&#8358;<?php echo addCommasToMoney($total); ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
