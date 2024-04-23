@@ -69,64 +69,14 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
 function addCommasToMoney($amount)
 {
-    return $amount;
-    // return number_format($amount);
-
-  if(strlen($amount) < 4){
-    return $amount;
-  }
-     /*"""
-  Formats a number as Nigerian naira with commas for thousands separators.
-
-  Args:
-      amount: The number to format (float or int).
-
-  Returns:
-      A string representing the formatted naira value.
-  """*/
-
     $amount = floatval($amount);
-
-  // Handle negative values (optional)
-  if ($amount < 0) {
-    $sign = "-";
-    $amount = abs($amount);
-  } else {
-    $sign = "";
-  }
-
-  // Extract millions (if any)
-  $millions = intval($amount / 1000000);
-  $remaining = $amount % 1000000;
-
-  // Format remaining amount with commas
-  $formatted_remaining = number_format($remaining, 2, '.', ','); // Use number_format for commas
-
-  // Combine millions and remaining parts
-  $formatted_amount = $sign . ($millions > 0 ? number_format($millions, 0, '', ',') . ',' : '') . $formatted_remaining;
-
-  // Remove trailing decimal zeros (optional)
-  $formatted_amount = rtrim($formatted_amount, '.0');
-
-  return $formatted_amount;
+    return number_format($amount, 2, '.', ',');
 }
 
 function remove_commas($formatted_amount) {
-  /*"""
-  Removes commas from a formatted naira string.
-
-  Args:
-      formatted_amount: The formatted naira string with commas.
-
-  Returns:
-      The original number without commas as a float.
-  """*/
-
-  // Replace commas with empty string
-  $amount_without_commas = str_replace(',', '', $formatted_amount);
-
-  // Convert back to float for calculations
-  return floatval($amount_without_commas);
+    $amount_without_commas = str_replace(',', '', $formatted_amount);
+    // Convert back to float for calculations
+    return floatval($amount_without_commas);
 }
 
 ?>
@@ -277,12 +227,15 @@ function remove_commas($formatted_amount) {
                                     foreach($data['services'] as $key => $value){
 
                                         $amountSubtotal = (remove_commas($amountSubtotal) + ($value["quantity"]*remove_commas($value["price"])));
-                                        $price_with_comma = addCommasToMoney($value["price"]);
+
+                                        $price_with_comma =  addCommasToMoney(remove_commas($value["price"]));
+
                                         $pre_sum = addCommasToMoney(($value["quantity"]*remove_commas($value["price"])));
+
                                         $rapped = wordwrap($value["service_description"], 50, "<br />\n", true);
                                         echo '<tr class="invo-tb-row">
-                                                <td class="font-sm">&nbsp; '.$value["service_name"].'</td>
-                                                <td class="font-sm">&nbsp; '. $rapped.'</td>
+                                                <td class="font-sm"> '.$value["service_name"].'</td>
+                                                <td class="font-sm"> '. $rapped.'</td>
                                                  <td class="font-sm ">&nbsp; '.$value["quantity"].' x &#8358;'.$price_with_comma.'</td>
                                                 <td class="font-sm ">&nbsp; &#8358;'.$pre_sum.'</td>
                                             </tr>';
@@ -296,21 +249,21 @@ function remove_commas($formatted_amount) {
                         <div class="invo-addition-wrap pt-20">
                             <div class="invo-add-info-content">
                                 <h3 class="font-md color-light-black">Additional Information:</h3>
-                                <p class="font-sm color-grey pt-10"><?php echo $service['description'];  ?></p>
+                                <p class="font-sm color-grey pt-10"><?php echo isset($service['description'])? $service['description']:"";  ?></p>
                             </div>
                             <div class="invo-bill-total width-30">
                                 <table class="invo-total-table">
                                     <tbody>
                                         <tr>
                                             <td class="font-md color-light-black ">Sub Total:</td>
-                                            <td class="font-md-grey color-grey text-right">&#8358;<?php echo $amountSubtotal; ?></td>
+                                            <td class="font-md-grey color-grey text-right">&#8358;<?php echo addCommasToMoney($amountSubtotal); ?></td>
                                         </tr>
                                         <?php if(!empty($data['tax'])){
                                             ?>
 
                                             <tr class="tax-row bottom-border">
                                             <td class="font-md color-light-black ">Tax <span class="font-md color-grey"></span></td>
-                                            <td class="font-md-grey color-grey text-right">&#8358;<?php echo !empty($data['tax']) ? $data['tax']:"" ; ?></td>
+                                            <td class="font-md-grey color-grey text-right">&#8358;<?php echo !empty($data['tax']) ? addCommasToMoney($data['tax']):"" ; ?></td>
                                         </tr>
                                         <?php
                                         }

@@ -128,63 +128,14 @@ function formatDate($date){
 
 function addCommasToMoney($amount)
 {
-    return number_format($amount);
-
-  if(strlen($amount) < 4){
-    return $amount;
-  }
-     /*"""
-  Formats a number as Nigerian naira with commas for thousands separators.
-
-  Args:
-      amount: The number to format (float or int).
-
-  Returns:
-      A string representing the formatted naira value.
-  """*/
-
     $amount = floatval($amount);
-
-  // Handle negative values (optional)
-  if ($amount < 0) {
-    $sign = "-";
-    $amount = abs($amount);
-  } else {
-    $sign = "";
-  }
-
-  // Extract millions (if any)
-  $millions = intval($amount / 1000000);
-  $remaining = $amount % 1000000;
-
-  // Format remaining amount with commas
-  $formatted_remaining = number_format($remaining, 2, '.', ','); // Use number_format for commas
-
-  // Combine millions and remaining parts
-  $formatted_amount = $sign . ($millions > 0 ? number_format($millions, 0, '', ',') . ',' : '') . $formatted_remaining;
-
-  // Remove trailing decimal zeros (optional)
-  $formatted_amount = rtrim($formatted_amount, '.0');
-
-  return $formatted_amount;
+    return number_format($amount, 2, '.', ',');
 }
 
 function remove_commas($formatted_amount) {
-  /*"""
-  Removes commas from a formatted naira string.
-
-  Args:
-      formatted_amount: The formatted naira string with commas.
-
-  Returns:
-      The original number without commas as a float.
-  """*/
-
-  // Replace commas with empty string
-  $amount_without_commas = str_replace(',', '', $formatted_amount);
-
-  // Convert back to float for calculations
-  return floatval($amount_without_commas);
+    $amount_without_commas = str_replace(',', '', $formatted_amount);
+    // Convert back to float for calculations
+    return floatval($amount_without_commas);
 }
 
 function format_time_with_am_pm($timeString) {
