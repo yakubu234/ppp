@@ -248,9 +248,12 @@ function remove_commas($formatted_amount) {
                         <!--Invoice additional info start here -->
                         <div class="invo-addition-wrap pt-20">
                             <div class="invo-add-info-content">
-                                <h3 class="font-md color-light-black">Additional Information:</h3>
-                                <p class="font-sm color-grey pt-10"><?php echo isset($data['message'])?$data['message']:""; ?>
-                                </p>
+                                <?php if(isset($data['message']) && !empty($data['message'])){ ?>
+                                    <h3 class="font-md color-light-black">Additional Information:</h3>
+                                    <p class="font-sm color-grey pt-10"><?php echo isset($data['message'])?$data['message']:""; ?>
+                                    </p>
+                                <?php } ?>
+                                
                             </div>
                             <div class="invo-bill-total width-30">
                                 <table class="invo-total-table">
@@ -293,6 +296,16 @@ function remove_commas($formatted_amount) {
                             </div>
                         </div>
                         <!--Invoice additional info end here -->
+                        <!-- agreement -->
+                        <!--Invoice additional info start here -->
+                        <div class="invo-addition-wrap pt-20">
+                            <div class=" width-100 ">
+                                <h3 class="font-md color-light-black text-center">Agreement :</h3>
+                                <p class="font-sm color-grey pt-10"> <?php echo isset($service['description'])? $service['description']:"";  ?>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- agreement ended -->
                     </div>
                     <div class="train-thanks-bg bg-train ">
                         <p>Thank you for choosing our service. See you soon 🙂 . contact us <a href="tel:+12345678899" class="font-18 color-white ">+234 704 116 7461</a></p>
