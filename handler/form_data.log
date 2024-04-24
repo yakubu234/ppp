@@ -2147,3 +2147,93 @@ Array
         )
 
 )
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => email@email.com
+    [customer_fullname] => full name
+    [customer_phone] => 0349094504
+    [customer_address] => 12 fnfn wisjeuw
+    [customer_contact_person_fullname] => swkdjuh
+    [customer_contact_person_phone] => sduhe
+    [type_of_event] => Cocktail
+    [number_of_guest] => 23983
+    [from] => 2024-04-27
+    [time_start] => 13:09
+    [time_end] => 16:11
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 450,000,000
+            [2] => 50,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 4
+            [2] => 7
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => email@email.com
+    [customer_fullname] => full name
+    [customer_phone] => 0349094504
+    [customer_address] => 12 fnfn wisjeuw
+    [customer_contact_person_fullname] => swkdjuh
+    [customer_contact_person_phone] => sduhe
+    [type_of_event] => Cocktail
+    [number_of_guest] => 23983
+    [from] => 2024-04-27
+    [time_start] => 13:09
+    [time_end] => 16:11
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 450,000,000
+            [2] => 50,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 4
+            [2] => 7
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)

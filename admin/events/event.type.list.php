@@ -60,7 +60,7 @@ include('../../includes/header.php'); ?>
                 <div class="card">
                 <div class="card-header pb-0 card-no-border">
                     <h3 style="float: left;">All Available Event type</h3>
-                    <a href="new_booking.data.php" style="text-decoration: none;" ><button style="float: right;" class="btn btn-square btn-success" type="button"> <i data-feather="bookmark"></i> Book Now </button></a>
+                    <a href="event.type.add.edit.php" style="text-decoration: none;" ><button style="float: right;" class="btn btn-square btn-success" type="button"> <i data-feather="bookmark"></i> Add New </button></a>
                     <div style="clear: both;margin-bottom:20px;"></div> <!-- Clear floats -->
                 </div>
                   <div class="card-body">

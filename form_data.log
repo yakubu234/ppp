@@ -2042,3 +2042,96 @@ Array
         )
 
 )
+Array
+(
+    [0] => Array
+        (
+            [start] => 2024-04-26 T:00
+            [end] => 2024-04-26 TTuesday, April 23, 2:00
+            [title] => Booked
+        )
+
+    [1] => Array
+        (
+            [start] => 2024-04-25 T19:38:00
+            [end] => 2024-04-25 T23:41:00
+            [title] => Booked
+        )
+
+    [2] => Array
+        (
+            [start] => 2024-04-26 T21:15:00
+            [end] => 2024-04-26 T23:16:00
+            [title] => Booked
+        )
+
+    [3] => Array
+        (
+            [start] => 2024-04-26 T22:19:00
+            [end] => 2024-04-26 T23:19:00
+            [title] => Booked
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [start] => 2024-04-26 T:00
+            [end] => 2024-04-26 TTuesday, April 23, 2:00
+            [title] => Booked
+        )
+
+    [1] => Array
+        (
+            [start] => 2024-04-25 T19:38:00
+            [end] => 2024-04-25 T23:41:00
+            [title] => Booked
+        )
+
+    [2] => Array
+        (
+            [start] => 2024-04-26 T21:15:00
+            [end] => 2024-04-26 T23:16:00
+            [title] => Booked
+        )
+
+    [3] => Array
+        (
+            [start] => 2024-04-26 T22:19:00
+            [end] => 2024-04-26 T23:19:00
+            [title] => Booked
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [start] => 2024-04-26 T:00
+            [end] => 2024-04-26 TTuesday, April 23, 2:00
+            [title] => Booked
+        )
+
+    [1] => Array
+        (
+            [start] => 2024-04-25 T19:38:00
+            [end] => 2024-04-25 T23:41:00
+            [title] => Booked
+        )
+
+    [2] => Array
+        (
+            [start] => 2024-04-26 T21:15:00
+            [end] => 2024-04-26 T23:16:00
+            [title] => Booked
+        )
+
+    [3] => Array
+        (
+            [start] => 2024-04-26 T22:19:00
+            [end] => 2024-04-26 T23:19:00
+            [title] => Booked
+        )
+
+)

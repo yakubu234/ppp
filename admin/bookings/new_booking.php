@@ -525,30 +525,28 @@
       }
 
       function formatMoney(amount) {
-            // Handle negative values (optional)
+          // Check if amount is less than 4 digits, no need for formatting
+          // if (absoluteAmount.toString().length < 4) {
+          //   return sign + "₦"+ absoluteAmount+".00";
+          // }
           const sign = amount < 0 ? "-" : "";
           const absoluteAmount = Math.abs(amount);
-
-          // Check if amount is less than 4 digits, no need for formatting
-          if (absoluteAmount.toString().length < 4) {
-            return sign + "₦"+ absoluteAmount+".00";
-          }
-
-          // Extract millions (if any)
-          const millions = Math.floor(absoluteAmount / 1000000);
-          const remaining = absoluteAmount % 1000000;
-
-          // Format remaining amount with commas using toLocaleString (handles locale-specific formatting)
-          const formattedRemaining = remaining.toLocaleString('en-NG', {
-            style: 'currency',
-            currency: 'NGN',
-            minimumFractionDigits: 2, // Optional: Specify minimum decimal places
-          });
-
+        
+          // Convert to string to handle large numbers more reliably
+          const amountString = absoluteAmount.toString();
+        
+          // Separate millions (if any)
+          const millionsPart = amountString.slice(0, -6); // Extract up to 6 digits from the left (millions)
+          const remainingPart = amountString.slice(-6); // Extract the last 6 digits (remaining)
+        
+          // Format remaining amount with commas (manual formatting)
+          const formattedRemaining = remainingPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        
           // Combine millions and remaining parts
-          const formattedAmount = sign + (millions > 0 ? millions.toLocaleString('en-NG', { style: 'decimal' }) + ',' : '') + formattedRemaining;
+          const formattedAmount = sign + (millionsPart ? millionsPart + ',' : '') + formattedRemaining + ".00";
+        
+          return "₦" + formattedAmount;
 
-          return formattedAmount;
       }
       // all_services = JSON.parse(fullServices);
       function addToCart() {
@@ -580,11 +578,12 @@
         // by default quantity is 1 and price will be used to calculate 
         let totalPrice = parseFloat(1 * removeCommas(selectedItem.price)).toFixed(2);
         totalPrice = formatMoney(totalPrice);
+        let selectedPrice = formatMoney(removeCommas(selectedItem.price));
         newRow.innerHTML = `
           <td></td>  
           <td>${selectedItem.name}</td>
           <td><input type="hidden" id="item_price_`+selectedItem.id+`"  value="`+selectedItem.price+`" name="price[]" />
-          &#x20A6;${selectedItem.price}</td>
+          ${selectedPrice}</td>
           <td>
             <input type="hidden" name="item_id[]" value="`+selectedItem.id+`" />
             <input type="hidden" value="1" id="quantity_original_`+selectedItem.id+`" name="quantity[]" />
@@ -743,17 +742,20 @@
       {
         var tbody = document.querySelector("#consent_show_summary tbody");
         // var newRow = tbody.insertRow();
-        let messgae = (data.message == "" ||  data.message == false) ? 'N/A':data.message ;
+        let messgae = (data.message == "" ||  data.message == false || data.message == null) ? 'N/A':data.message ;
         let new_table = '<tr><th>Client Name:</th> <td colspan="3"> '+data.customer_fullname+'</td> <th>Client Number</th>  <td colspan="2"> '+data.customer_phone+'</td> </tr><tr><th>Client Email:</th> <td colspan="3">  '+data.customer_email+'</td><th>Customer  Address</th> <td colspan="2"> '+data.customer_address+'</td> </tr><tr><th>Contact person  Name:</th> <td colspan="3">  '+data.customer_contact_person_fullname+'</td><th>Contact Person Phone </th> <td colspan="2"> '+data.customer_contact_person_phone+'</td> </tr><tr><th>Booking Stauts:</th> <td colspan="3">  pending</td><th>Event Type</th> <td colspan="2"> '+data.type_of_event+'</td> </tr> <tr><th>Booking Date:</th> <td colspan="3"> '+data.from+'</td> <th>Time</th>  <td colspan="2"> '+data.time_start+' to '+data.time_end+'</td></tr><tr><th >Number of Guest:</th><td colspan="3"> '+data.number_of_guest+'</td> <th>Apply Date</th>  <td colspan="2">'+data.apply_date+'</td></tr><tr><th >Message (if any)?</th><td colspan="6"> '+messgae+'</td> </tr> <tr><th colspan="7"></th> </tr>';
 
         var services = data.services;
         var sub_total;let pre_total = 0.0;
         services.forEach(function(service, index) {
 
+
+        let selectedPrice = formatMoney(removeCommas(service.price));
+
           sub_total = parseFloat(service.quantity * removeCommas(service.price)).toFixed(2);
             pre_total = (parseFloat(pre_total)+parseFloat(sub_total)); 
             let formatedSubTotal = formatMoney(sub_total)
-            new_table += '<th colspan="2">Service Name: <b><i>'+service.service_name+'</i></b></th><th> Desc</th><td>'+service.service_description+'</td><th> Price : &#x20A6; '+service.price+'</th><th>Qty:  '+service.quantity+'</th><th>Sub Total: '+formatedSubTotal+'</th> </tr>';
+            new_table += '<th colspan="2">Service Name: <b><i>'+service.service_name+'</i></b></th><th> Desc</th><td>'+service.service_description+'</td><th> Price : '+selectedPrice+'</th><th>Qty:  '+service.quantity+'</th><th>Sub Total: '+formatedSubTotal+'</th> </tr>';
           });
 
           let discount =  (data.discount == null || data.discount == "" ||  data.discount == false)? 0.0:parseFloat(removeCommas(data.discount)) ;
