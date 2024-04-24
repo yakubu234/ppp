@@ -1,0 +1,1 @@
+go to the image folder and extract the two zip files into same locations, it was being splited because of git rule of 100 mb

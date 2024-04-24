@@ -28,8 +28,8 @@ function formatDatesInternal($dateArray) {
         $dateStart = DateTime::createFromFormat('l, F j, Y', $item['date_start']);
         $dateEnd = DateTime::createFromFormat('l, F j, Y', $item['date_start']);
 
-        $data['start'] = $dateStart->format('Y-m-d'). ' T'.formatTimeWithSeconds($item['time_start']);
-        $data['end'] = $dateEnd->format('Y-m-d'). ' T'. formatTimeWithSeconds($item['time_end']);
+        $data['start'] = $dateStart->format('Y-m-d'). 'T'.formatTimeWithSeconds($item['time_start']);
+        $data['end'] = $dateEnd->format('Y-m-d'). 'T'. formatTimeWithSeconds($item['time_end']);
         $data['title'] = "Booked";
         $data2[] = $data;
     }
