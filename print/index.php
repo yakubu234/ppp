@@ -249,7 +249,8 @@ function remove_commas($formatted_amount) {
                         <div class="invo-addition-wrap pt-20">
                             <div class="invo-add-info-content">
                                 <h3 class="font-md color-light-black">Additional Information:</h3>
-                                <p class="font-sm color-grey pt-10"><?php echo isset($service['description'])? $service['description']:"";  ?></p>
+                                <p class="font-sm color-grey pt-10"><?php echo isset($data['message'])?$data['message']:""; ?>
+                                </p>
                             </div>
                             <div class="invo-bill-total width-30">
                                 <table class="invo-total-table">
