@@ -47,7 +47,7 @@
                 <div class="card">
                 <div class="card-header pb-0 card-no-border">
                     <h3 style="float: left;">All Available Services</h3>
-                    <a href="new_booking.data.php" style="text-decoration: none;" ><button style="float: right;" class="btn btn-square btn-success" type="button"> <i data-feather="bookmark"></i> Book Now </button></a>
+                    <a href="../bookings/new_booking.data.php" style="text-decoration: none;" ><button style="float: right;" class="btn btn-square btn-success" type="button"> <i data-feather="bookmark"></i> Book Now </button></a>
                     <div style="clear: both;margin-bottom:20px;"></div> <!-- Clear floats -->
                 </div>
                   <div class="card-body">
@@ -74,7 +74,7 @@
                                   <td>&#x20A6;'.$service['price'].'</td>
                                   <td> 
                                   <ul class="action">
-                                      <li class="edit"><a href="new_booking.data.php"><button class="btn btn-primary"><i class="icofont icofont-book-mark" style="color: white;"></i> BOOK NOW</button> </a></li> 
+                                      <li class="edit"><a href="../bookings/new_booking.data.php"><button class="btn btn-primary"><i class="icofont icofont-book-mark" style="color: white;"></i> BOOK NOW</button> </a></li> 
                                   
                                       <li class="edit"><a href="services.edit.php?id='.$service['id']."_".uniqid().'"><button class="btn btn-primary"><i class="icofont  icofont-edit" style="color: white;"></i></button> </a></li>
 
