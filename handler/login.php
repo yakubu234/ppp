@@ -34,7 +34,7 @@ if (isset($_POST['login'])) {
         if($user['type'] == 0){
             header("Refresh:0; url=../user/dashboard/dashboard.data.php");
         }else{
-            header("Refresh:0; url=../admin/dashboard/dashboard.php");
+            header("Refresh:0; url=../admin/dashboard/dashboard.data.php");
         }
         exit;
       } else {

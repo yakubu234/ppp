@@ -9,17 +9,18 @@ function formatTimeWithSeconds($timeString) {
   return $formattedTime . ':00';
 }
 
-
 function formatDates($dateArray) {
     foreach ($dateArray as &$item) {
         $dateStart = DateTime::createFromFormat('l, F j, Y', $item['date_start']);
-        $dateEnd = DateTime::createFromFormat('l, F j, Y', $item['date_start']);
+        $dateEnd =  DateTime::createFromFormat('l, F j, Y', $item['date_start']);
 
-        $item['date_start'] = $dateStart->format('m/d/Y');
-        $item['date_end'] = $dateEnd->format('m/d/Y');
+        // Check if the month and day have leading zeros and remove them if present
+        $item['date_start'] = preg_replace('/^0(\d+)/', '$1', $dateStart->format('n/j/Y'));
+        $item['date_end'] = preg_replace('/^0(\d+)/', '$1', $dateEnd->format('n/j/Y'));
     }
     return $dateArray;
 }
+
 
 function formatDatesInternal($dateArray) {
     $data2 = [];
