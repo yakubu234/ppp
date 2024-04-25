@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Log the form data
     file_put_contents('form_data.log', print_r($_POST, true), FILE_APPEND | LOCK_EX);
 
-    
     // $form_action => $_POST['form_action'],
          // Process the form data
          $bookingsData = [
@@ -98,14 +97,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // update the bookings with amount
                 $status = "active";
+                $paymentStatus = (($finalAmount - $_POST['amount_paid']) <= 0)?"completed":"part payment";
+                  // $data['amount_paid'] = ;
                 $finalAmount = addCommasToMoney($finalAmount);
-                $sql="update bookings set total_amount=:amount, status=:status where id=:id";
+                $sql="update bookings set total_amount=:amount,payment_status=:payment_status, status=:status where id=:id";
                 $query = $dbh->prepare($sql);
                 $query-> bindParam(':amount', $finalAmount, PDO::PARAM_STR);
+                $query-> bindParam(':payment_status', $paymentStatus, PDO::PARAM_STR);
                 $query-> bindParam(':status', $status, PDO::PARAM_STR);
                 $query-> bindParam(':id', $lastInsertedId, PDO::PARAM_STR);
                 $query->execute();
                 
+                // insert into payments 
+
+                $sql = "INSERT INTO payments (booking_id, amount) VALUES (:booking_id, :amount)";
+                $query = $dbh->prepare($sql);
+                $query->bindParam(':booking_id', $bookingsData['bookign_id'], PDO::PARAM_STR);
+                $query->bindParam(':amount', $_POST['amount_paid'], PDO::PARAM_STR);
+                $query->execute();
                 // Send response back to client
                 $response = ['success' => true, 'message' => 'Form data processed successfully', 'id' => $bookingsData['bookign_id']];
                 http_response_code(200); // OK

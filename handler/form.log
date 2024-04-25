@@ -766,3 +766,77 @@ Array
         )
 
 )
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 12:57 PM
+    [time_end] => 18:58 PM
+    [customer_email] => meme@email.com
+    [customer_fullname] => ddhfhf shdhh
+    [customer_phone] => 099907799089
+    [customer_address] => 12, odeogbolu close,
+    [customer_contact_person_fullname] => new use r
+    [customer_contact_person_phone] => 0303090939
+    [amount_paid] => 4000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Community
+    [number_of_guest] => 2394
+    [from] => Saturday, April 27, 2024
+    [apply_date] => Thursday, April 25, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 12:57 PM
+    [time_end] => 18:58 PM
+    [customer_email] => meme@email.com
+    [customer_fullname] => ddhfhf shdhh
+    [customer_phone] => 099907799089
+    [customer_address] => 12, odeogbolu close,
+    [customer_contact_person_fullname] => new use r
+    [customer_contact_person_phone] => 0303090939
+    [amount_paid] => 3005000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Community
+    [number_of_guest] => 2394
+    [from] => Saturday, April 27, 2024
+    [apply_date] => Thursday, April 25, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)

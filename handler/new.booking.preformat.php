@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
          $data['customer_address'] = $_POST['customer_address'];
          $data['customer_contact_person_fullname'] = $_POST['customer_contact_person_fullname'];
          $data['customer_contact_person_phone'] = $_POST['customer_contact_person_phone'];
+         $data['amount_paid'] = $_POST['amount_paid'];
          
          $data['phone'] = isset($_POST['user_phone']) ? $_POST['user_phone']:"";
          $data['fullname']  = $_POST['fullname'];

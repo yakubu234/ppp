@@ -268,17 +268,25 @@
                         </table>
                         <p>&nbsp;</p>
                         <div class="row">
-                          <div class="col-sm-5">
+                          <div class="col-sm-6">
                             <label class="form-label" for="discount_field">Discount (if any)<span class="txt-danger">*</span></label>
                             <input class="form-control" id="discount_field" min="0"  name="discount" type="number"  placeholder="Enter Discount (if any) " oninput="calculateTotal()">
                           </div>
-                          <div class="col-sm-3"></div>
+                          <div class="col-sm-6">
+                            <label class="form-label" for="amount_paid__field">Amount Paid<span class="txt-danger">*</span></label>
+                            <input class="form-control" id="amount_paid__field" min="0" required="" name="amount_paid" type="number"  placeholder="Enter Amount paid" oninput="calculateTotal()">
+                          </div>
+
+                          <div class="col-sm-8"></div>
                           
                         <div class="cart-totals col-sm-4">
                           <p>Subtotal: <span id="subTotal">0.00</span></p>
                           <p>Tax (0%): &#x20A6;<span id="tax">0.00</span></p>
                           <p>Discount: <span id="discount">0.00</span> (Optional)</p>
-                          <p><strong>Total: <span id="final_total">0.00</span></strong></p>
+                          <p><strong class="text-danger">Total: <span id="final_total">0.00</span></strong></p>
+
+                          <p><strong>Amount Paid: <span id="amount_paid__span">0.00</span></strong> </p>
+                          <p><strong class="text-danger">To Balance: <span id="final_balance">0.00</span></strong></p>
                         </div>
                         </div>
                         </div>
@@ -640,11 +648,20 @@
         // var tax = parseFloat(document.getElementById("tax").value);
         var tax = 0;
         let discount =  0.00;
+        let user_amount_paid =  0.00;
         let discountField = document.getElementById("discount_field").value;
+        let amountPaid = document.getElementById("amount_paid__field").value;
+        
         if (discountField === null || discountField === "") {
             
         }else{
             discount = removeCommas(discountField)
+        }
+
+        if (amountPaid === null || amountPaid === "") {
+            
+        }else{
+            user_amount_paid = removeCommas(amountPaid)
         }
 
         // if tax matters is raised, solve it here
@@ -653,9 +670,13 @@
         let newsubtotal = subTotal.toFixed(2);
         let newDiscount = discount.toFixed(2);
         let newTotal = total.toFixed(2);
+        let finanal_bal_owing = (total - user_amount_paid) <= 0? 0.00:(total - user_amount_paid);
+
 
         document.getElementById("subTotal").textContent = formatMoney(newsubtotal);
         document.getElementById("discount").textContent = formatMoney(newDiscount);
+        document.getElementById("amount_paid__span").textContent = formatMoney(user_amount_paid.toFixed(2));
+        document.getElementById("final_balance").textContent = formatMoney(finanal_bal_owing.toFixed(2));
         document.getElementById("final_total").textContent = formatMoney(newTotal);
       }
 
@@ -769,7 +790,14 @@
           let new_final_pretotal = formatMoney(pre_total);
           let new_final_discount = formatMoney(discount);
           let new_final_total = formatMoney(final_total);
-        new_table +=`<tr> <th colspan="7"></th></tr> <tr> <th colspan="4"></th> <th> Sub Total</th> <td colspan="2">${new_final_pretotal}</td> </tr> <tr><th colspan="4"></th> <th> Tax</th><td colspan="2">${new_final_tax}</td> </tr><tr><th colspan="4"></th> <th> Discount</th><td colspan="2">${new_final_discount}</td></tr> <tr><th colspan="4"></th> <th> Total</th> <td colspan="2">${new_final_total}</td> </tr>`;
+          
+          let amount_paid = data.amount_paid;
+          let formatted_amount_paid = formatMoney(amount_paid);
+
+          let owing = (final_total-amount_paid) <= 0 ? 0.00:(final_total-amount_paid); 
+          let formatted_owing = formatMoney(owing);
+
+        new_table +=`<tr> <th colspan="7"></th></tr> <tr> <th colspan="4"></th> <th> Sub Total</th> <td colspan="2">${new_final_pretotal}</td> </tr> <tr><th colspan="4"></th> <th> Tax</th><td colspan="2">${new_final_tax}</td> </tr><tr><th colspan="4"></th> <th> Discount</th><td colspan="2">${new_final_discount}</td></tr> <tr><th colspan="4"></th> <th> Total</th> <td colspan="2">${new_final_total}</td> </tr> <tr><th colspan="4"></th> <th> Ammount Paid</th> <td colspan="2">${formatted_amount_paid}</td> </tr> <tr><th colspan="4"></th> <th> To Balance</th> <td colspan="2"><span class="text-danger">${formatted_owing}</span></td> </tr>`;
         tbody.innerHTML = new_table;
       }
 

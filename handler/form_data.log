@@ -2237,3 +2237,161 @@ Array
         )
 
 )
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => meme@email.com
+    [customer_fullname] => ddhfhf shdhh
+    [customer_phone] => 099907799089
+    [customer_address] => 12, odeogbolu close,
+    [customer_contact_person_fullname] => new use r
+    [customer_contact_person_phone] => 0303090939
+    [type_of_event] => Community
+    [number_of_guest] => 2394
+    [from] => 2024-04-27
+    [time_start] => 12:57
+    [time_end] => 18:58
+    [price] => Array
+        (
+            [0] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+        )
+
+    [amount_paid] => 4000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => meme@email.com
+    [customer_fullname] => ddhfhf shdhh
+    [customer_phone] => 099907799089
+    [customer_address] => 12, odeogbolu close,
+    [customer_contact_person_fullname] => new use r
+    [customer_contact_person_phone] => 0303090939
+    [type_of_event] => Community
+    [number_of_guest] => 2394
+    [from] => 2024-04-27
+    [time_start] => 12:57
+    [time_end] => 18:58
+    [price] => Array
+        (
+            [0] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+        )
+
+    [amount_paid] => 3005000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => meme@email.com
+    [customer_fullname] => ddhfhf shdhh
+    [customer_phone] => 099907799089
+    [customer_address] => 12, odeogbolu close,
+    [customer_contact_person_fullname] => new use r
+    [customer_contact_person_phone] => 0303090939
+    [type_of_event] => Community
+    [number_of_guest] => 2394
+    [from] => 2024-04-27
+    [time_start] => 12:57
+    [time_end] => 18:58
+    [price] => Array
+        (
+            [0] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+        )
+
+    [amount_paid] => 3005000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+    [0] => Array
+        (
+            [id] => 14
+            [bookign_id] => 5662a4739eba3a
+            [user_id] => 5
+            [date_start] => Saturday, April 27, 2024
+            [time_start] => 12:57 PM
+            [time_end] => 18:58 PM
+            [event_type] => Community
+            [number_of_guest] => 2394
+            [message] => 
+            [remarks] => 
+            [status] => active
+            [admin_id] => 
+            [tax] => 
+            [total_amount] => 3,090,990.00
+            [discount] => 
+            [created_at] => 2024-04-25 13:06:17
+            [updated_at] => 2024-04-25 13:06:17
+            [date_of_application] => Thursday, April 25, 2024
+            [customer_contact_person_phone] => 0303090939
+            [customer_contact_person_fullname] => new use r
+            [customer_address] => 12, odeogbolu close,
+            [customer_phone] => 099907799089
+            [customer_fullname] => ddhfhf shdhh
+            [customer_email] => meme@email.com
+            [payment_status] => part payment
+        )
+
+)

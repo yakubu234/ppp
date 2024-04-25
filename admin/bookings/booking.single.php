@@ -191,6 +191,18 @@
               let new_final_discount = formatMoney(discount);
               let new_final_total = formatMoney(final_total);
 
+              let sum = 0.0;
+              var payments_made = data.payments_details;
+
+              payments_made.forEach(function(payment, index) {
+                  sum = sum+ removeCommas(payment.amount)
+              });
+
+              let amount_paid = sum;
+              let formatted_amount_paid = formatMoney(amount_paid);
+
+              let owing = (final_total-amount_paid) <= 0 ? 0.00:(final_total-amount_paid); 
+              let formatted_owing = formatMoney(owing);
           
 
         new_table +=`<tr> <th colspan="7"></th></tr> <tr> <th colspan="4"></th> <th> Sub Total</th> <td colspan="2"> ${new_final_pretotal}</td> </tr> <tr><th colspan="4"></th> <th> Tax</th><td colspan="2">${new_final_tax}</td> </tr><tr><th colspan="4"></th> <th> Discount</th><td colspan="2">${new_final_discount}</td></tr> <tr><th colspan="4">`;
@@ -201,10 +213,22 @@
           new_table +=`<a href="approve.data.php?id=${bookingId}" target="_blank"><button class="btn btn-danger" type="button">Approve Booking</button></a>`;
         }
 
-       new_table +=`</th> <th> Total</th> <td colspan="2">${new_final_total}</td> </tr>`;
+        if(data.payment_status !== 'completed'){
+            new_table +=` &nbsp;<button class="btn btn-success" type="button" onclick="showAddBalanceForm()">Add Balance</button>`;
+        }
+
+        new_table +=` &nbsp;<a href="history.data.php?id=${bookingId}" target="_blank"><button class="btn btn-primary" type="button">View History </button></a>`;
+
+       new_table +=`</th> <th> Total</th> <td colspan="2">${new_final_total}</td> </tr><tr><th colspan="4">
+       <form id="add_balance_form" style="display: none;" method="POST" action="../../handler/addbalance.php"><input type="hidden" name="booking_id" value="${bookingId}" /> <input type="hidden" name="existing_pay" value="${amount_paid}" /> <input type="hidden" name="total_amount" value="${final_total}" /> <div class="row" ><div class="col-sm-6" ><input type="number" min="0" required name="balance" class="form-control"  /></div><div class="col" ><button type="submit" class="btn btn-info">Add Balance</button></div></div></form>
+       </th> <th> Ammount Paid</th> <td colspan="2">${formatted_amount_paid}</td> </tr> <tr><th colspan="4"></th> <th> To Balance</th> <td colspan="2"><span class="text-danger">${formatted_owing}</span></td> </tr>`;
         tbody.innerHTML = new_table;
       }
 
+      function showAddBalanceForm(){
+          const form = document.getElementById("add_balance_form");
+          form.style.display = "block";
+      }
 
     </script>
     <?php include('../../error_handler.php'); ?>
