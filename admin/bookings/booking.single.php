@@ -166,8 +166,13 @@
         var tbody = document.querySelector("#consent_show_summary tbody");
         // var newRow = tbody.insertRow();
         let messgae = (data.message == "" ||  data.message == false || data.message == null) ? 'N/A':data.message ;
-           let new_table = '<tr><th>Client Name:</th> <td colspan="3"> '+data.customer_fullname+'</td> <th>Client Number</th>  <td colspan="2"> '+data.customer_phone+'</td> </tr><tr><th>Client Email:</th> <td colspan="3">  '+data.customer_email+'</td><th>Customer  Address</th> <td colspan="2"> '+data.customer_address+'</td> </tr><tr><th>Contact person  Name:</th> <td colspan="3">  '+data.customer_contact_person_fullname+'</td><th>Contact Person Phone </th> <td colspan="2"> '+data.customer_contact_person_phone+'</td> </tr><tr><th>Booking Stauts:</th> <td colspan="3"> '+data.status+'</td><th>Event Type</th> <td colspan="2"> '+data.type_of_event+'</td> </tr> <tr><th>Booking Date:</th> <td colspan="3"> '+data.from+'</td> <th>Time</th>  <td colspan="2"> '+data.time_start+' to '+data.time_end+'</td></tr><tr><th >Number of Guest:</th><td colspan="3"> '+data.number_of_guest+'</td> <th>Apply Date</th>  <td colspan="2">'+data.apply_date+'</td></tr><tr><th >Message (if any)?</th><td colspan="6"> '+messgae+'</td> </tr> <tr><th colspan="7"></th> </tr>';
-        
+           let new_table = '<tr><th>Client Name:</th> <td colspan="3"> '+data.customer_fullname+'</td> <th>Client Number</th>  <td colspan="2"> '+data.customer_phone+'</td> </tr><tr><th>Client Email:</th> <td colspan="3">  '+data.customer_email+'</td><th>Customer  Address</th> <td colspan="2"> '+data.customer_address+'</td> </tr><tr><th>Contact person  Name:</th> <td colspan="3">  '+data.customer_contact_person_fullname+'</td><th>Contact Person Phone </th> <td colspan="2"> '+data.customer_contact_person_phone+'</td> </tr><tr><th>Booking Stauts:</th> <td colspan="3"> '+data.status+'</td><th>Event Type</th> <td colspan="2"> '+data.type_of_event+'</td> </tr> <tr><th>Booking Date:</th> <td colspan="3"> '+data.from+'</td> <th>Time</th>  <td colspan="2"> '+data.time_start+' to '+data.time_end+'</td></tr><tr><th >Number of Guest:</th><td colspan="3"> '+data.number_of_guest+'</td> <th>Apply Date</th>  <td colspan="2">'+data.apply_date+'</td></tr><tr><th >Message (if any)?</th><td colspan="6"> '+messgae+'</td> ';
+
+            if(data.admin_id){
+              new_table +=  '<tr><th >Approved By: </th><td colspan="6"> '+data.admin_id+'</td> </tr>'
+            }
+          
+            new_table +='<tr><th colspan="7"></th> </tr></tr> <tr><th colspan="7"></th> </tr>';
             var services = data.services;
             var sub_total;let pre_total = 0.0;
             services.forEach(function(service, index) {

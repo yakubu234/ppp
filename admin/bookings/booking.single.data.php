@@ -23,6 +23,7 @@ if(isset($_GET['id']) ){
     // print_r($bookings);die;
 
     $data['bookign_id'] = $bookings[0]['bookign_id'];
+    $data['admin_id'] = $bookings[0]['admin_id'];
     $data['user_id'] = $bookings[0]['user_id'];
     $data['email'] = $bookings[0]['user_email'];
     $data['phone'] =  $bookings[0]['user_phone'];

@@ -40,12 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             'customer_phone' => $_POST['customer_phone'],
             'customer_address' => $_POST['customer_address'],
             'customer_contact_person_fullname' => $_POST['customer_contact_person_fullname'],
-            'customer_contact_person_phone' => $_POST['customer_contact_person_phone']
+            'customer_contact_person_phone' => $_POST['customer_contact_person_phone'],
+            'admin_id' => $currentUser['fullname']
          ];
 
          //insert into bookings
-            $sql = "INSERT INTO bookings (user_id, event_type, number_of_guest, date_start, time_start, time_end, tax, message, discount, date_of_application,bookign_id,customer_email, customer_fullname, customer_phone, customer_address, customer_contact_person_fullname, customer_contact_person_phone) 
-            VALUES (:user_id, :event_type, :number_of_guest, :date_start, :time_start, :time_end, :tax, :message, :discount, :date_of_application, :bookign_id, :customer_email, :customer_fullname, :customer_phone, :customer_address, :customer_contact_person_fullname, :customer_contact_person_phone)";
+            $sql = "INSERT INTO bookings (user_id, event_type, number_of_guest, date_start, time_start, time_end, tax, message, discount, date_of_application,bookign_id,customer_email, customer_fullname, customer_phone, customer_address, customer_contact_person_fullname, customer_contact_person_phone,admin_id) 
+            VALUES (:user_id, :event_type, :number_of_guest, :date_start, :time_start, :time_end, :tax, :message, :discount, :date_of_application, :bookign_id, :customer_email, :customer_fullname, :customer_phone, :customer_address, :customer_contact_person_fullname, :customer_contact_person_phone, :admin_id)";
             $query = $dbh->prepare($sql);
 
             // Bind parameters
