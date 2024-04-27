@@ -2266,3 +2266,85 @@ Array
         )
 
 )
+Array
+(
+    [0] => Array
+        (
+            [start] => 2024-04-26T21:15:00
+            [end] => 2024-04-26T23:16:00
+            [title] => Booked
+        )
+
+    [1] => Array
+        (
+            [start] => 2024-04-26T22:19:00
+            [end] => 2024-04-26T23:19:00
+            [title] => Booked
+        )
+
+    [2] => Array
+        (
+            [start] => 2024-04-27T13:09:00
+            [end] => 2024-04-27T16:11:00
+            [title] => Booked
+        )
+
+    [3] => Array
+        (
+            [start] => 2024-04-27T12:57:00
+            [end] => 2024-04-27T18:58:00
+            [title] => Booked
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [start] => 2024-04-27T13:09:00
+            [end] => 2024-04-27T16:11:00
+            [title] => Booked
+        )
+
+    [1] => Array
+        (
+            [start] => 2024-04-27T12:57:00
+            [end] => 2024-04-27T18:58:00
+            [title] => Booked
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [start] => 2024-04-27T13:09:00
+            [end] => 2024-04-27T16:11:00
+            [title] => Booked
+        )
+
+    [1] => Array
+        (
+            [start] => 2024-04-27T12:57:00
+            [end] => 2024-04-27T18:58:00
+            [title] => Booked
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [start] => 2024-04-27T13:09:00
+            [end] => 2024-04-27T16:11:00
+            [title] => Booked
+        )
+
+    [1] => Array
+        (
+            [start] => 2024-04-27T12:57:00
+            [end] => 2024-04-27T18:58:00
+            [title] => Booked
+        )
+
+)

@@ -2,6 +2,8 @@
 include('../conn/database.php');
 error_reporting(E_ALL);
 
+
+$currentUser = $_SESSION["current_user"];
 $data = [];
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
@@ -60,6 +62,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $query->execute();
 
     $service = $query->fetch(PDO::FETCH_ASSOC);
+
+
+    $action = "printed ticket with booking id  $booking_id ";
+    logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'], $data['booking_id']);
+
     
     // include('booking.single.php');
 }else{

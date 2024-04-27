@@ -86,39 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo json_encode($response);
 }
 
-function formatDate($date){
-    return $formattedDate = date("l, F j, Y", strtotime($date));
-}
 
-function format_time_with_am_pm($timeString) {
-  
-  /*
 
-  Formats a time string to include AM or PM based on the hour.
-
-  Args:
-      timeString: A string representing the time in 24-hour format (e.g., '10:30','17:15').
-
-  Returns:
-      A string representing the formatted time with AM or PM appended.
-  """
-
-  */
-
-  // Convert the time string to a DateTime object
-  $dateTime = DateTime::createFromFormat('H:i', $timeString);
-
-  // Extract the hour (0-23)
-  $hour = $dateTime->format('H');
-
-  // Determine AM/PM based on the hour
-  $amPm = ($hour < 12) ? 'AM' : 'PM';
-
-  // Format the time with leading zeros (optional)
-  $formattedTime = $dateTime->format('h:i'); // Use 'h' for 12-hour format with leading zeros
-
-  // Combine formatted time and AM/PM
-  return $timeString . ' ' . $amPm;
-}
 
 ?>

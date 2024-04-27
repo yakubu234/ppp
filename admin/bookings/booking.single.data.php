@@ -2,6 +2,8 @@
 include('../../conn/auth_checker.php');
 error_reporting(E_ALL);
 
+$currentUser = $_SESSION["current_user"];
+
 $userId =$_SESSION['obbsuid'] ;
 $data = [];
 if(isset($_GET['id']) ){
@@ -64,6 +66,10 @@ if(isset($_GET['id']) ){
     $payments = $query->fetchAll(PDO::FETCH_ASSOC);
     $data['payments_details'] = $payments;
     
+    $booking_id = $data['bookign_id'];
+    $action = "searched or viewed event with booking id  $booking_id ";
+    logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'],$booking_id );
+
 
     include('booking.single.php');
 }else{

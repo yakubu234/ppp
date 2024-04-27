@@ -840,3 +840,95 @@ Array
         )
 
 )
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 09:38 AM
+    [time_end] => 14:40 PM
+    [customer_email] => sind njsn
+    [customer_fullname] => wnsjdjbs
+    [customer_phone] => wnsjddb
+    [customer_address] => dubsu
+    [customer_contact_person_fullname] => sadus
+    [customer_contact_person_phone] => andub
+    [amount_paid] => 200000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 1203
+    [from] => Sunday, April 28, 2024
+    [apply_date] => Saturday, April 27, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 2000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 09:45 AM
+    [time_end] => 14:41 PM
+    [customer_email] => kdj
+    [customer_fullname] => sijdisi
+    [customer_phone] => wdnjnsu
+    [customer_address] => edju
+    [customer_contact_person_fullname] => jdsnuns
+    [customer_contact_person_phone] => jasdnju
+    [amount_paid] => 200000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 203912
+    [from] => Saturday, April 27, 2024
+    [apply_date] => Saturday, April 27, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 2000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 3
+                    [service_name] => Photo Booth Hire
+                    [service_description] => (early equipment setup included)
+                    [quantity] => 1
+                    [price] => 200
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)

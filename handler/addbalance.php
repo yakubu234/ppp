@@ -27,7 +27,7 @@ if (isset($_POST['balance']) && isset($_POST['booking_id']) && !empty($_POST['bo
 	 $total_amount = $_POST['total_amount'];
 	 $booking_id = $_POST['booking_id'];
 	 $balance = $_POST['balance'];
-
+     $description = "additional part";
 	if(( $total_amount - ($balance + $existing_pay) ) <= 0){
 		//update the booking payment status
 		$description = 'completed';
@@ -45,10 +45,18 @@ if (isset($_POST['balance']) && isset($_POST['booking_id']) && !empty($_POST['bo
     $query->bindParam(':booking_id', $booking_id, PDO::PARAM_STR);
     $query->bindParam(':amount', $balance, PDO::PARAM_STR);
 
+    $totalBeingPaid = addCommasToMoney($balance + $existing_pay);
+    $balance = addCommasToMoney($balance);
     if($query->execute() === TRUE){
+
+        $action = "successfully added   ₦$balance to the amount paid for booking id  $booking_id as $description payment. The total that has been paid is ₦$totalBeingPaid";
+        logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'], $booking_id);
         $_SESSION['success'] = 'Ok successful';
         header("Refresh:0; url=$pageUrl");
     }else{
+
+        $action = "unable to add balance of  $balance of booking id  $booking_id ";
+        logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'], $booking_id);
         $_SESSION['errors'] ='action not successful';
         header("Refresh:0; url=$pageUrl");
     }

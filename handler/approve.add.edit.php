@@ -33,9 +33,15 @@ if (isset($_POST['start_date'])) {
 		$pageUrl = "../admin/bookings/booking.single.data.php?id=".$booking_id;
 
     if($query->execute() === TRUE){
+        $action = "successfully change the booking status to  $status of booking id  ".$booking_id;
+        logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'], $booking_id);
+
         $_SESSION['success'] = 'Ok successful';
         header("Refresh:0; url=$pageUrl");
     }else{
+
+        $action = "unable to change the booking status to  $status of booking id  $booking_id ";
+        logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'], $booking_id);
         $_SESSION['errors'] ='action not successful';
         header("Refresh:0; url=$pageUrl");
     }

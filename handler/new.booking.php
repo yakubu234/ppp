@@ -109,6 +109,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $query->execute();
                 
                 // insert into payments 
+                $booking_id  = $bookingsData['bookign_id'];
+                $action = "successfully added ₦$finalAmount being paid as $paymentStatus  payment for booking id  $booking_id ";
+                logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'], $bookingsData['bookign_id']);
 
                 $sql = "INSERT INTO payments (booking_id, amount) VALUES (:booking_id, :amount)";
                 $query = $dbh->prepare($sql);
@@ -131,51 +134,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo json_encode($response);
 }
 
-function formatDate($date){
-    return $formattedDate = date("l, F j, Y", strtotime($date));
-}
-
-function addCommasToMoney($amount)
-{
-    $amount = floatval($amount);
-    return number_format($amount, 2, '.', ',');
-}
-
-function remove_commas($formatted_amount) {
-    $amount_without_commas = str_replace(',', '', $formatted_amount);
-    // Convert back to float for calculations
-    return floatval($amount_without_commas);
-}
-
-function format_time_with_am_pm($timeString) {
- /*
-
-  Formats a time string to include AM or PM based on the hour.
-
-  Args:
-      timeString: A string representing the time in 24-hour format (e.g., '10:30','17:15').
-
-  Returns:
-      A string representing the formatted time with AM or PM appended.
-  """
-
-  */
-
-  // Convert the time string to a DateTime object
-  $dateTime = DateTime::createFromFormat('H:i', $timeString);
-
-  // Extract the hour (0-23)
-  $hour = $dateTime->format('H');
-
-  // Determine AM/PM based on the hour
-  $amPm = ($hour < 12) ? 'AM' : 'PM';
-
-  // Format the time with leading zeros (optional)
-  $formattedTime = $dateTime->format('h:i'); // Use 'h' for 12-hour format with leading zeros
-
-  // Combine formatted time and AM/PM
-  return $timeString . ' ' . $amPm;
-}
 
 
 ?>
