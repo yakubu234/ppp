@@ -74,18 +74,6 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 }
 
 
-function addCommasToMoney($amount)
-{
-    $amount = floatval($amount);
-    return number_format($amount, 2, '.', ',');
-}
-
-function remove_commas($formatted_amount) {
-    $amount_without_commas = str_replace(',', '', $formatted_amount);
-    // Convert back to float for calculations
-    return floatval($amount_without_commas);
-}
-
 ?>
 
 <!DOCTYPE html>
