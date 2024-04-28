@@ -19,19 +19,20 @@ error_reporting(E_ALL);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $search_key = $_POST['search_key'];
-    $type = identifyInputType($search_key);
-    // echo $type;
-    $sql = "SELECT b.* FROM bookings b ";
-    if ($type === 'booking_id') {
-        $sql .= "WHERE b.bookign_id = :search_key";// If the search key is a booking ID, select bookings with that ID
-    } else {
-        // If the search key is not a booking ID, select bookings associated with the user
-        $sql .= "JOIN users u ON b.user_id = u.id WHERE u.email = :search_key OR u.phone = :search_key";
-    }
+    $sql = "SELECT * FROM bookings WHERE created_at BETWEEN :startDate AND :endDate";
+    // $sql = "SELECT b.*, SUM(p.amount) AS total_paid_amount 
+    //         FROM bookings b 
+    //         LEFT JOIN payments p ON b.bookign_id COLLATE utf8mb4_general_ci = p.booking_id COLLATE utf8mb4_general_ci
+    //         WHERE b.created_at BETWEEN :startDate COLLATE utf8mb4_general_ci AND :endDate COLLATE utf8mb4_general_ci
+    //         GROUP BY b.id";
+
+
+    $startDate = date('Y-m-d H:i:s', strtotime($_POST['start_date']));  // Assuming startDate comes from user input
+    $endDate = date('Y-m-d H:i:s', strtotime($_POST['end_date']));    // Assuming endDate comes from user input
 
     $query = $dbh->prepare($sql);
-    $query->bindParam(':search_key', $search_key, PDO::PARAM_STR);
+    $query->bindParam(':startDate', $startDate, PDO::PARAM_STR);
+    $query->bindParam(':endDate', $endDate, PDO::PARAM_STR);
 
     if($query->execute()){
         

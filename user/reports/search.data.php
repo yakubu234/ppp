@@ -50,6 +50,13 @@ $userId =$_SESSION['obbsuid'] ;
                   <div class="card-header">
                     <form class="theme-form">
                       <div class="input-group m-0 flex-nowrap">
+                        <label class="form-control-plaintext">Start date</label>
+                        <!-- <input class="form-control-plaintext" type="date" placeholder="Start Date" id="search_field"> -->
+                        <label class="form-control-plaintext" >End date</label>
+                        <!-- <input class="form-control-plaintext" type="date" placeholder="End Date" id="search_field_2"> -->
+                      </div>
+
+                      <div class="input-group m-0 flex-nowrap">
                         <input class="form-control-plaintext" type="date" placeholder="Start Date" id="search_field">
 
                         <input class="form-control-plaintext" type="date" placeholder="End Date" id="search_field_2">
@@ -167,15 +174,16 @@ $userId =$_SESSION['obbsuid'] ;
 
                 function loadHtmlTable(data){
                     if(data.length < 1) {
-                        alert('there is a problem')
+                        
+                    alert('no record found');
                     }else{  
                         let services = data;
                     var tbody = document.querySelector("#show_bookings tbody");
                         services.forEach(function(service, index) {
                             let bookingCount =`<tr><td>#${service.bookign_id}</td>
-                                  <td><span class="badge rounded-pill badge-light-info">${service.event_type} </span></td>
-                                  <td> <span class="badge rounded-pill badge-primary">${service.date_start}   to  ${service.date_end} </span></td>
-                                  <td> <span class="badge rounded-pill badge-info"> ${service.number_of_guest} </span></td>`;
+                                  <td><span class="">${service.event_type} </span></td>
+                                  <td> <span class="">${service.date_start}   from  ${service.time_start} to   ${service.time_end}</span></td>
+                                  <td> <span class=""> ${service.number_of_guest} </span></td>`;
                             
                                   var bookingStatus =' <span class="badge rounded-pill badge-danger">Under Review</span>'; 
                                   if(service.status == 'approved') bookingStatus =' <span class="badge rounded-pill badge-success">'+service.status+'</span>';
@@ -184,7 +192,7 @@ $userId =$_SESSION['obbsuid'] ;
                                   <td>&#x20A6;${service.total_amount}</td>
                                   <td> 
                                   <ul class="action">
-                                      <li class="edit"><a href="booking.single.data.php?id=${service.bookign_id}"><button class="btn btn-primary"><i class="icofont icofont-open-eye" style="color: white;"></i></button> </a></li> 
+                                      <li class="edit"><a href="../bookings/booking.single.data.php?id=${service.bookign_id}"><button class="btn btn-primary"><i class="icofont icofont-open-eye" style="color: white;"></i></button> </a></li> 
                                   </ul>
                                   </td>
                                 </tr>`;

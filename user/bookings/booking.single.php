@@ -166,8 +166,13 @@
         var tbody = document.querySelector("#consent_show_summary tbody");
         // var newRow = tbody.insertRow();
         let messgae = (data.message == "" ||  data.message == false || data.message == null) ? 'N/A':data.message ;
-           let new_table = '<tr><th>Client Name:</th> <td colspan="3"> '+data.customer_fullname+'</td> <th>Client Number</th>  <td colspan="2"> '+data.customer_phone+'</td> </tr><tr><th>Client Email:</th> <td colspan="3">  '+data.customer_email+'</td><th>Customer  Address</th> <td colspan="2"> '+data.customer_address+'</td> </tr><tr><th>Contact person  Name:</th> <td colspan="3">  '+data.customer_contact_person_fullname+'</td><th>Contact Person Phone </th> <td colspan="2"> '+data.customer_contact_person_phone+'</td> </tr><tr><th>Booking Stauts:</th> <td colspan="3"> '+data.status+'</td><th>Event Type</th> <td colspan="2"> '+data.type_of_event+'</td> </tr> <tr><th>Booking Date:</th> <td colspan="3"> '+data.from+'</td> <th>Time</th>  <td colspan="2"> '+data.time_start+' to '+data.time_end+'</td></tr><tr><th >Number of Guest:</th><td colspan="3"> '+data.number_of_guest+'</td> <th>Apply Date</th>  <td colspan="2">'+data.apply_date+'</td></tr><tr><th >Message (if any)?</th><td colspan="6"> '+messgae+'</td> </tr> <tr><th colspan="7"></th> </tr>';
-        
+           let new_table = '<tr><th>Client Name:</th> <td colspan="3"> '+data.customer_fullname+'</td> <th>Client Number</th>  <td colspan="2"> '+data.customer_phone+'</td> </tr><tr><th>Client Email:</th> <td colspan="3">  '+data.customer_email+'</td><th>Customer  Address</th> <td colspan="2"> '+data.customer_address+'</td> </tr><tr><th>Contact person  Name:</th> <td colspan="3">  '+data.customer_contact_person_fullname+'</td><th>Contact Person Phone </th> <td colspan="2"> '+data.customer_contact_person_phone+'</td> </tr><tr><th>Booking Stauts:</th> <td colspan="3"> '+data.status+'</td><th>Event Type</th> <td colspan="2"> '+data.type_of_event+'</td> </tr> <tr><th>Booking Date:</th> <td colspan="3"> '+data.from+'</td> <th>Time</th>  <td colspan="2"> '+data.time_start+' to '+data.time_end+'</td></tr><tr><th >Number of Guest:</th><td colspan="3"> '+data.number_of_guest+'</td> <th>Apply Date</th>  <td colspan="2">'+data.apply_date+'</td></tr><tr><th >Message (if any)?</th><td colspan="6"> '+messgae+'</td> ';
+
+            if(data.admin_id){
+              new_table +=  '<tr><th >Approved By: </th><td colspan="6"> '+data.admin_id+'</td> </tr>'
+            }
+          
+            new_table +='<tr><th colspan="7"></th> </tr></tr> <tr><th colspan="7"></th> </tr>';
             var services = data.services;
             var sub_total;let pre_total = 0.0;
             services.forEach(function(service, index) {
@@ -191,6 +196,18 @@
               let new_final_discount = formatMoney(discount);
               let new_final_total = formatMoney(final_total);
 
+              let sum = 0.0;
+              var payments_made = data.payments_details;
+
+              payments_made.forEach(function(payment, index) {
+                  sum = sum+ removeCommas(payment.amount)
+              });
+
+              let amount_paid = sum;
+              let formatted_amount_paid = formatMoney(amount_paid);
+
+              let owing = (final_total-amount_paid) <= 0 ? 0.00:(final_total-amount_paid); 
+              let formatted_owing = formatMoney(owing);
           
 
         new_table +=`<tr> <th colspan="7"></th></tr> <tr> <th colspan="4"></th> <th> Sub Total</th> <td colspan="2"> ${new_final_pretotal}</td> </tr> <tr><th colspan="4"></th> <th> Tax</th><td colspan="2">${new_final_tax}</td> </tr><tr><th colspan="4"></th> <th> Discount</th><td colspan="2">${new_final_discount}</td></tr> <tr><th colspan="4">`;
@@ -201,10 +218,22 @@
           new_table +=`<a href="approve.data.php?id=${bookingId}" target="_blank"><button class="btn btn-danger" type="button">Approve Booking</button></a>`;
         }
 
-       new_table +=`</th> <th> Total</th> <td colspan="2">${new_final_total}</td> </tr>`;
+        if(data.payment_status !== 'completed'){
+            new_table +=` &nbsp;<button class="btn btn-success" type="button" onclick="showAddBalanceForm()">Add Balance</button>`;
+        }
+
+        new_table +=` &nbsp;<a href="history.data.php?id=${bookingId}" target="_blank"><button class="btn btn-primary" type="button">View History </button></a>`;
+
+       new_table +=`</th> <th> Total</th> <td colspan="2">${new_final_total}</td> </tr><tr><th colspan="4">
+       <form id="add_balance_form" style="display: none;" method="POST" action="../../handler/addbalance.php"><input type="hidden" name="booking_id" value="${bookingId}" /> <input type="hidden" name="existing_pay" value="${amount_paid}" /> <input type="hidden" name="total_amount" value="${final_total}" /> <div class="row" ><div class="col-sm-6" ><input type="number" min="0" required name="balance" class="form-control"  /></div><div class="col" ><button type="submit" class="btn btn-info">Add Balance</button></div></div></form>
+       </th> <th> Ammount Paid</th> <td colspan="2">${formatted_amount_paid}</td> </tr> <tr><th colspan="4"></th> <th> To Balance</th> <td colspan="2"><span class="text-danger">${formatted_owing}</span></td> </tr>`;
         tbody.innerHTML = new_table;
       }
 
+      function showAddBalanceForm(){
+          const form = document.getElementById("add_balance_form");
+          form.style.display = "block";
+      }
 
     </script>
     <?php include('../../error_handler.php'); ?>

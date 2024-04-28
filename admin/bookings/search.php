@@ -150,7 +150,8 @@
 
                 function loadHtmlTable(data){
                     if(data.length < 1) {
-                        alert('there is a problem')
+                        
+                    alert('no record found');
                     }else{  
                         let services = data;
                     var tbody = document.querySelector("#show_bookings tbody");

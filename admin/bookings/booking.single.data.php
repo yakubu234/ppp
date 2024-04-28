@@ -69,7 +69,7 @@ if(isset($_GET['id']) ){
     
     $booking_id = $data['bookign_id'];
     $action = "searched or viewed event with booking id  $booking_id ";
-    logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'],$booking_id );
+    // logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'],$booking_id );
 
 
     include('booking.single.php');

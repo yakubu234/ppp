@@ -62,6 +62,8 @@
                             <th>status</th>
                             <th>total amount</th>
                             <th></th>
+                            <th></th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -83,6 +85,18 @@
                                   <ul class="action">
                                       <li class="edit"><a href="booking.single.data.php?id='.$booking['bookign_id'].'"><button class="btn btn-primary"><i class="icofont icofont-open-eye" style="color: white;"></i></button> </a></li> 
                                   </ul>
+                                  </td> 
+                                  <td> 
+                                  <ul class="action">
+                                      
+                                  </ul>
+                                  </td> 
+                                  <td> 
+                                  <ul class="action">
+                                     
+                                  </ul>
+
+
                                   </td>
                                 </tr>
                                 ';
@@ -101,6 +115,8 @@
                             <th>number of guest</th>
                             <th>status</th>
                             <th>total amount</th>
+                            <th></th>
+                            <th></th>
                             <th></th>
                           </tr>
                         </tfoot>

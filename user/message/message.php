@@ -81,7 +81,7 @@
                                       <li class="edit"><a href="message.view.data.php?id='.$message['id']."_".uniqid().'"><button class="btn btn-primary"><i class="icofont icofont-open-eye" style="color: white;"></i></button> </a></li> ';
                                       
                                       echo $currentUser['type'] > 0 ? '
-                                      <li class="edit"><a title="Delete" href="message.view.data.php/'.$message['id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i></button> </a></li>':"";
+                                      <li class="edit"><a title="Delete" href="../../handler/message.delete.php/'.$message['id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i></button> </a></li>':"";
                                       
                                       echo' 
                                   </ul>

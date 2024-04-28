@@ -2,6 +2,8 @@
 include('../../conn/auth_checker.php');
 error_reporting(E_ALL);
 
+$currentUser = $_SESSION["current_user"];
+
 $userId =$_SESSION['obbsuid'] ;
 $data = [];
 if(isset($_GET['id']) ){
@@ -20,6 +22,8 @@ if(isset($_GET['id']) ){
 
     // print_r($bookings);die;
 
+    $data['bookign_id'] = $bookings[0]['bookign_id'];
+    $data['admin_id'] = $bookings[0]['admin_id'];
     $data['user_id'] = $bookings[0]['user_id'];
     $data['email'] = $bookings[0]['user_email'];
     $data['phone'] =  $bookings[0]['user_phone'];
@@ -29,6 +33,7 @@ if(isset($_GET['id']) ){
     $data['from'] =  $bookings[0]['date_start'];
      $data['time_start'] = $bookings[0]['time_start'];
      $data['time_end'] =  $bookings[0]['time_end'];
+     $data['payment_status'] =  $bookings[0]['payment_status'];
 
     $data['apply_date'] =  $bookings[0]['date_of_application'];
     $data['tax']  =  $bookings[0]['tax'];
@@ -54,6 +59,19 @@ if(isset($_GET['id']) ){
         $services[] = $service;
     }
     $data['services'] = $services;
+
+    $sql = "SELECT * FROM payments WHERE booking_id=:booking_id";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':booking_id', $bookings[0]['bookign_id'], PDO::PARAM_STR);
+    $query->execute();
+    $payments = $query->fetchAll(PDO::FETCH_ASSOC);
+    $data['payments_details'] = $payments;
+    
+    $booking_id = $data['bookign_id'];
+    $action = "searched or viewed event with booking id  $booking_id ";
+    // logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'],$booking_id );
+
+
     include('booking.single.php');
 }else{
     $_SESSION['errors'] ='Error the booking ID is missing';
