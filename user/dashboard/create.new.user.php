@@ -95,7 +95,7 @@ include('../../includes/header.php');
                                 <?php if(isset($selectedUser['type'])){
                                     $dd = $selectedUser['type'] == 0 ? 'User':(($selectedUser['type'] == 5)?"Super Admin":"Admin");
                                     echo '
-                                    <option selected readonly>'. $dd.'</option>';
+                                    <option selected value="'.$selectedUser['type'].'">'. $dd.'</option>';
                                 }else{
                                     echo '
                                     <option selected readonly>Select User Type</option>';

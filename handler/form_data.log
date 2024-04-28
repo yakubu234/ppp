@@ -1043,3 +1043,181 @@ Array
         )
 
 )
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => create@create.com
+    [customer_fullname] => full num
+    [customer_phone] => 0990988989
+    [customer_address] => 12, toto aisei
+    [customer_contact_person_fullname] => full future
+    [customer_contact_person_phone] => 00908989787
+    [type_of_event] => Cocktail
+    [number_of_guest] => 5345
+    [from] => 2024-04-30
+    [time_start] => 21:12
+    [time_end] => 23:12
+    [price] => Array
+        (
+            [0] => 200
+            [1] => 80,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 3
+            [1] => 1
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+        )
+
+    [amount_paid] => 30000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => create@create.com
+    [customer_fullname] => full num
+    [customer_phone] => 0990988989
+    [customer_address] => 12, toto aisei
+    [customer_contact_person_fullname] => full future
+    [customer_contact_person_phone] => 00908989787
+    [type_of_event] => Cocktail
+    [number_of_guest] => 5345
+    [from] => 2024-04-30
+    [time_start] => 21:12
+    [time_end] => 23:12
+    [price] => Array
+        (
+            [0] => 200
+            [1] => 80,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 3
+            [1] => 1
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+        )
+
+    [amount_paid] => 30000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => new@email.com
+    [customer_fullname] => full number
+    [customer_phone] => 09283938
+    [customer_address] => 23, titol
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 02090930930
+    [type_of_event] => Community
+    [number_of_guest] => 120
+    [from] => 2024-04-27
+    [time_start] => 21:15
+    [time_end] => 23:15
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 80,000
+            [2] => 200
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 1
+            [2] => 3
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [amount_paid] => 2000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => new@email.com
+    [customer_fullname] => full number
+    [customer_phone] => 09283938
+    [customer_address] => 23, titol
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 02090930930
+    [type_of_event] => Community
+    [number_of_guest] => 120
+    [from] => 2024-04-27
+    [time_start] => 21:15
+    [time_end] => 23:15
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 80,000
+            [2] => 200
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 1
+            [2] => 3
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [amount_paid] => 2000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)

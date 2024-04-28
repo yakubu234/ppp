@@ -91,11 +91,15 @@
                                       <li class="edit"><a title="approve booking" href="approve.data.php?id='.$booking['bookign_id'].'"><button class="btn btn-success"><i class="icofont icofont-check-circled" style="color: white;"></i>  </button> </a></li> 
                                   </ul>
                                   </td> 
-                                  <td> 
-                                  <ul class="action">
-                                      <li class="edit"><a title="decline booking" href="approve.data.php?id='.$booking['bookign_id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i>  </button> </a></li> 
-                                  </ul>
+                                  <td> ';
 
+                                  if($currentUser['type'] > 4){
+                                    echo '
+                                  <ul class="action">
+                                      <li class="edit"><a title="decline booking" href="../../handler/delete.data.php?id='.$booking['bookign_id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i>  </button> </a></li> 
+                                  </ul>';
+                                  }
+                                    echo '
 
                                   </td>
                                 </tr>

@@ -1,0 +1,101 @@
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 21:12 PM
+    [time_end] => 23:12 PM
+    [customer_email] => create@create.com
+    [customer_fullname] => full num
+    [customer_phone] => 0990988989
+    [customer_address] => 12, toto aisei
+    [customer_contact_person_fullname] => full future
+    [customer_contact_person_phone] => 00908989787
+    [amount_paid] => 30000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Cocktail
+    [number_of_guest] => 5345
+    [from] => Tuesday, April 30, 2024
+    [apply_date] => Sunday, April 28, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 3
+                    [service_name] => Photo Booth Hire
+                    [service_description] => (early equipment setup included)
+                    [quantity] => 1
+                    [price] => 200
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 1
+                    [price] => 80,000
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 21:15 PM
+    [time_end] => 23:15 PM
+    [customer_email] => new@email.com
+    [customer_fullname] => full number
+    [customer_phone] => 09283938
+    [customer_address] => 23, titol
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 02090930930
+    [amount_paid] => 2000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Community
+    [number_of_guest] => 120
+    [from] => Saturday, April 27, 2024
+    [apply_date] => Sunday, April 28, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 1
+                    [price] => 80,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 3
+                    [service_name] => Photo Booth Hire
+                    [service_description] => (early equipment setup included)
+                    [quantity] => 1
+                    [price] => 200
+                )
+
+        )
+
+)

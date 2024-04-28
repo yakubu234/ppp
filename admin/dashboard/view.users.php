@@ -86,7 +86,7 @@
                                   <ul class="action">
                                       <li class="edit"><a href="create.new.user.php?id='.$registeredUser['id']."_".uniqid().'"><button class="btn btn-primary"><i class="icofont  icofont-edit" style="color: white;"></i></button> </a></li>
 
-                                      <li class="edit"><a title="Disable User" href="message.view.data.php/'.$registeredUser['id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i></button> </a></li>';
+                                      <li class="edit"><a href="create.new.user.php?id='.$registeredUser['id']."_".uniqid().'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i></button> </a></li>';
                                       
                                       echo' 
                                   </ul>
