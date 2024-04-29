@@ -9,6 +9,7 @@ $sql = "SELECT * FROM messages WHERE status=:status";
 $status = "active";
 $query = $dbh->prepare($sql);
 $query->bindParam(':status', $status, PDO::PARAM_STR);
+// $query->bindParam(':recepient', $userId, PDO::PARAM_STR);
 $query->execute();
 $messages = $query->fetchAll(PDO::FETCH_ASSOC);
 // print_r($messages);die;
