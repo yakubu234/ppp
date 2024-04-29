@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['name']) && $_GET['name'
 }elseif ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['name']) && $_GET['name'] == 'calendar') {
 
     $currentDate = date('l, F j, Y'); // Get the current date in the same format as stored in the database
-    $sql = "SELECT date_start, date_end FROM bookings WHERE STR_TO_DATE(date_start, '%W, %M %e, %Y') >= STR_TO_DATE(:currentDate, '%W, %M %e, %Y')";
+    $sql = "SELECT date_start FROM bookings WHERE STR_TO_DATE(date_start, '%W, %M %e, %Y') >= STR_TO_DATE(:currentDate, '%W, %M %e, %Y')";
     $query = $dbh->prepare($sql);
     $query->bindParam(':currentDate', $currentDate, PDO::PARAM_STR);
     if($query->execute()){
