@@ -22,6 +22,8 @@ include('../../includes/header.php');
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
     <link id="color" rel="stylesheet" href="../../assets/css/color-1.css" media="screen">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="../../assets/css/responsive.css">
   </head>
@@ -66,8 +68,8 @@ include('../../includes/header.php');
                         <input type="hidden" value="<?php echo isset($service['id'])? $service['id']:""; ?>" name="item_id" />
                         
                         <div class="col-md-12">
-                          <label class="form-label" for="Description">Enter Agreement Description</label>
-                          <textarea class="form-control" row="10" id="Description" name="description" required placeholder="Enter Descriptionl"><?php echo isset($service['description'])? $service['description']:""; ?></textarea>
+                          <label class="form-label" for="summernote_here">Enter Agreement Description</label>
+                          <textarea class="form-control" row="10"  id="summernote_here" name="description" required placeholder="Enter Descriptionl"><?php echo isset($service['description'])? $service['description']:""; ?></textarea>
                         </div>
                         
 
@@ -112,7 +114,24 @@ include('../../includes/header.php');
     <!-- Theme js-->
     <script src="../../assets/js/script.js"></script>
     <script src="../../assets/js/theme-customizer/customizer.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     
+    <script>
+    $(document).ready(function() {
+        $('#summernote_here').summernote();
+    });
+
+    // Fetch the HTML content with HTML entities from your backend
+        // This is a placeholder, you should replace it with your actual fetching mechanism
+        var encodedContent = "<?php echo $service['description']; ?>";
+
+        // Decode HTML entities back to HTML
+        var decodedContent = decodeEntities(encodedContent);
+
+        // Set the decoded HTML content to a div element
+        document.getElementById("summernote_here").innerHTML = decodedContent;
+
+</script>
     
     <?php include('../../error_handler.php'); ?>
   </body>

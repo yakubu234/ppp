@@ -296,7 +296,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                         <div class="invo-addition-wrap pt-20">
                             <div class=" width-100 ">
                                 <h3 class="font-md color-light-black text-center">Agreement :</h3>
-                                <p class="font-sm color-grey pt-10"> <?php echo isset($service['description'])? $service['description']:"";  ?>
+                                <p class="font-sm color-grey pt-10" id="summernoteContent">
                                 </p>
                             </div>
                         </div>
@@ -358,5 +358,18 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     <script src="assets/js/jspdf.min.js"></script>
     <script src="assets/js/html2canvas.min.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script>
+        var encodedContent = "<?php echo $$service['description']; ?>";
+
+        // Decode HTML entities back to HTML
+        var decodedContent = decodeEntities(encodedContent);
+
+
+        // Set the decoded HTML content to a div element
+        document.getElementById("summernoteContent").innerHTML = decodedContent;
+
+
+
+    </script>
 </body>
 </html>
