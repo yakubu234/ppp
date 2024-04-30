@@ -6,3 +6,8 @@ software/api.php?name=contact_message   post   email, name, subject and message
 
 
 software/api.php?name=book_now   post   email, date, fullname 
+
+
+
+
+software/api.php?name=contact   get

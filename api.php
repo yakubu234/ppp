@@ -89,6 +89,21 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['name']) && $_GET['name'
         http_response_code(400);
         echo json_encode($response);
     }
+}elseif($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['name']) && $_GET['name'] == 'contact') {
+
+    $sql = "SELECT * FROM contact_page ";
+    $query = $dbh->prepare($sql);
+    if($query->execute()){
+        $contact = $query->fetchAll(PDO::FETCH_ASSOC);
+        file_put_contents('form_data.log', print_r($contact, true), FILE_APPEND | LOCK_EX);
+        $response = ['success' => true, 'message' => 'Form data processed successfully', 'data' => $contact];
+        http_response_code(200); // OK
+        echo json_encode($response);
+    } else {
+        $response = ['success' => false, 'message' => 'Invalid request method'];
+        http_response_code(400);
+        echo json_encode($response);
+    }
 }elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_GET['name']) && $_GET['name'] == 'contact_message') {
 
     $recepient = "admin";
