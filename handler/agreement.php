@@ -23,7 +23,8 @@ $pageUrl = "../admin/agreement/agrrement.list.php";
 if (isset($_POST['description'])) {
 
     $id = isset($_POST['item_id']) ?$_POST['item_id']:"";
-    $description = htmlentities($_POST['description']);
+    // $description = htmlentities($_POST['description']);
+    $description = $_POST['description'];
     if(!empty($id)){
         $sql="update agreement set description=:description";
         $query = $dbh->prepare($sql);

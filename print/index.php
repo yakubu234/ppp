@@ -61,12 +61,23 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $query = $dbh->prepare($sql);
     $query->execute();
 
-    $service = $query->fetch(PDO::FETCH_ASSOC);
+    $agreement = $query->fetch(PDO::FETCH_ASSOC);
 
-
+    $booking_id = $data['booking_id'];
     $action = "printed ticket with booking id  $booking_id ";
     logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'], $data['booking_id']);
 
+    $sql = "SELECT * FROM payments where booking_id=:booking_id ";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':booking_id', $booking_id, PDO::PARAM_STR);
+    $query->execute();
+
+    $payments = $query->fetchAll(PDO::FETCH_ASSOC);
+    $totalPaid = 0;
+    foreach ($payments as $key => $value) {
+        $totalPaid = $totalPaid + remove_commas($value['amount']);
+        # code...
+    }
     
     // include('booking.single.php');
 }else{
@@ -286,6 +297,14 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                                             <td class="font-18-700 color-train font-18-500 pt-20">Grand Total:</td>
                                             <td class="font-18-500 color-light-black pt-20 text-right">&#8358;<?php echo addCommasToMoney($total); ?></td>
                                         </tr>
+                                        <tr class="invo-grand-total">
+                                            <td class="font-18-700 color-train font-18-500 pt-20">Amount Paid:</td>
+                                            <td class="font-18-500 color-light-green pt-20 text-right" style="color:green;">&#8358;<?php echo addCommasToMoney($totalPaid); ?></td>
+                                        </tr>
+                                        <tr class="invo-grand-total">
+                                            <td class="font-18-700 color-train font-18-500 pt-20">To Balance:</td>
+                                            <td class="font-18-500 color-light-red pt-20 text-right" style="color: red;">&#8358;<?php $balance= (($total - $totalPaid) <= 0)? 0.00: ($total - $totalPaid); echo addCommasToMoney($balance); ?></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -293,10 +312,10 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                         <!--Invoice additional info end here -->
                         <!-- agreement -->
                         <!--Invoice additional info start here -->
-                        <div class="invo-addition-wrap pt-20">
+                        <div class="invo-addition-wrap pt-50">
                             <div class=" width-100 ">
-                                <h3 class="font-md color-light-black text-center">Agreement :</h3>
-                                <p class="font-sm color-grey pt-10" id="summernoteContent">
+                                <h3 class="font-md color-light-black text-left">AGREEMENT </h3>
+                                <div class="font-sm color-grey pt-10"> <?php echo isset($agreement['description'])?$agreement['description']: ""; ?></div>
                                 </p>
                             </div>
                         </div>

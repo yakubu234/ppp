@@ -1221,3 +1221,95 @@ Array
         )
 
 )
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => thhrr
+    [customer_fullname] => dshjdbh
+    [customer_phone] => 93039393093
+    [customer_address] => 233 2hbhbhwh
+    [customer_contact_person_fullname] => shhsebg
+    [customer_contact_person_phone] => jnjshsb
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 1203
+    [from] => 2024-05-10
+    [time_start] => 16:48
+    [time_end] => 21:50
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 80,000
+            [2] => 450,000,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 1
+            [2] => 4
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [amount_paid] => 200000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => thhrr
+    [customer_fullname] => dshjdbh
+    [customer_phone] => 93039393093
+    [customer_address] => 233 2hbhbhwh
+    [customer_contact_person_fullname] => shhsebg
+    [customer_contact_person_phone] => jnjshsb
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 1203
+    [from] => 2024-05-10
+    [time_start] => 16:48
+    [time_end] => 21:50
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 80,000
+            [2] => 450,000,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 1
+            [2] => 4
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [amount_paid] => 200000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)

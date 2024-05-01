@@ -10,6 +10,8 @@ $userId =$_SESSION['obbsuid'] ;
     $query->execute();
 
     $service = $query->fetch(PDO::FETCH_ASSOC);
+
+    $agreementDescription = isset($service['description']) ? $service['description']: "Type here";
   
 
 // Access the count using the key 'total_bookings
@@ -69,7 +71,7 @@ include('../../includes/header.php');
                         
                         <div class="col-md-12">
                           <label class="form-label" for="summernote_here">Enter Agreement Description</label>
-                          <textarea class="form-control" row="10"  id="summernote_here" name="description" required placeholder="Enter Descriptionl"><?php echo isset($service['description'])? $service['description']:""; ?></textarea>
+                          <textarea class="form-control" row="10"  id="summernote_here" name="description" required placeholder="Enter Descriptionl"></textarea>
                         </div>
                         
 
@@ -117,20 +119,16 @@ include('../../includes/header.php');
      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     
     <script>
-    $(document).ready(function() {
-        $('#summernote_here').summernote();
-    });
+      $(document).ready(function() {
+          $('#summernote_here').summernote({
+            height: 300
+          });
+      });
 
-    // Fetch the HTML content with HTML entities from your backend
-        // This is a placeholder, you should replace it with your actual fetching mechanism
-        var encodedContent = "<?php echo $service['description']; ?>";
-
-        // Decode HTML entities back to HTML
-        var decodedContent = decodeEntities(encodedContent);
-
-        // Set the decoded HTML content to a div element
-        document.getElementById("summernote_here").innerHTML = decodedContent;
-
+      var encodedContent = "<?php echo $agreementDescription; ?>";
+      var decodedContent = encodedContent;
+      // Set the decoded HTML content to a div element
+      document.getElementById("summernote_here").innerHTML = decodedContent;
 </script>
     
     <?php include('../../error_handler.php'); ?>

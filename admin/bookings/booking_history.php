@@ -64,6 +64,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -85,8 +86,15 @@
                                   <ul class="action">
                                       <li class="edit"><a href="booking.single.data.php?id='.$booking['bookign_id'].'"><button class="btn btn-primary"><i class="icofont icofont-open-eye" style="color: white;"></i></button> </a></li> 
                                   </ul>
-                                  </td> 
-                                  <td> 
+                                  </td>';
+                                  if($currentUser['type'] > 0){
+                                     echo '
+                                  <td><ul class="action">
+                                      <li class="edit"><a title="decline booking" href="booking.edit.single.data.php?id='.$booking['bookign_id'].'"><button class="btn btn-info"><i class="icofont icofont-pencil" style="color: white;"></i>  </button> </a></li> 
+                                  </ul></td>';
+                                  }
+
+                                  echo '<td> 
                                   <ul class="action">
                                       <li class="edit"><a title="approve booking" href="approve.data.php?id='.$booking['bookign_id'].'"><button class="btn btn-success"><i class="icofont icofont-check-circled" style="color: white;"></i>  </button> </a></li> 
                                   </ul>
@@ -98,7 +106,7 @@
                                   <ul class="action">
                                       <li class="edit"><a title="decline booking" href="../../handler/delete.data.php?id='.$booking['bookign_id'].'"><button class="btn btn-danger"><i class="icofont icofont-trash" style="color: white;"></i>  </button> </a></li> 
                                   </ul>';
-                                  }
+                                  } 
                                     echo '
 
                                   </td>
@@ -119,6 +127,7 @@
                             <th>number of guest</th>
                             <th>status</th>
                             <th>total amount</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
