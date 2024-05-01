@@ -121,32 +121,25 @@ include('../../includes/header.php');
     <script>
       // $(document).ready(function() {
 
-        // $(window).load(function(){
-        //       // set content 
-        //       <?php //if(isset($agreementDescription)) { ?>
-        //         var codeings = '<?php // echo $agreementDescription;  ?>';
-        //       $('#summernote_here').html(codeings);
-        //       <?php } ?>
+        $(window).load(function(){
+              // set content 
+              var codeings = '<?php echo $agreementDescription;  ?>';
+              if(codeings){
+                $('#summernote_here').html(codeings);
+              }
 
-        //        $('#summernote_here').summernote({
-        //           height: 300
-        //         });
+               $('#summernote_here').summernote({
+                  height: 300
+                });
 
-        //   });
+          });
 
           // $('#summernote_here').summernote({
           //   height: 300
           // });
       // });
 
-      var encodedContent = "<?php echo $agreementDescription; ?>";
-      if(encodedContent){
-        $('#summernote_here').html(encodedContent);
-      }
-
-      $('#summernote_here').summernote({
-        height: 300
-      });
+      // var encodedContent = "<?php //echo $agreementDescription; ?>";
       // var decodedContent = encodedContent;
       // Set the decoded HTML content to a div element
       // document.getElementById("summernote_here").innerHTML = decodedContent;
