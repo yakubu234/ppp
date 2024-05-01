@@ -5,11 +5,11 @@ error_reporting(E_ALL);
 $userId =$_SESSION['obbsuid'] ;
 
 // Fetch user data based on email
-$sql = "SELECT * FROM messages WHERE user_id=:user_id OR OR recepient =:recepient AND status=:status";
+$sql = "SELECT * FROM messages WHERE  status=:status";
 $status = "active";
 $query = $dbh->prepare($sql);
-$query->bindParam(':user_id', $userId, PDO::PARAM_STR);
-$query->bindParam(':recepient', $userId, PDO::PARAM_STR);
+// $query->bindParam(':user_id', $userId, PDO::PARAM_STR);
+// $query->bindParam(':recepient', $userId, PDO::PARAM_STR);
 $query->bindParam(':status', $status, PDO::PARAM_STR);
 $query->execute();
 $messages = $query->fetchAll(PDO::FETCH_ASSOC);

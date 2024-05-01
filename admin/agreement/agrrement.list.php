@@ -120,15 +120,28 @@ include('../../includes/header.php');
     
     <script>
       $(document).ready(function() {
+
+        $(window).load(function(){
+    // create editor 
           $('#summernote_here').summernote({
             height: 300
           });
+
+              // set content 
+              <?php if(isset($agreementDescription)) { ?>
+              $('#summernote_here').code('<?php echo $agreementDescription;  ?>');
+              <?php } ?>
+          });
+
+          // $('#summernote_here').summernote({
+          //   height: 300
+          // });
       });
 
-      var encodedContent = "<?php echo $agreementDescription; ?>";
-      var decodedContent = encodedContent;
+      // var encodedContent = "<?php //echo $agreementDescription; ?>";
+      // var decodedContent = encodedContent;
       // Set the decoded HTML content to a div element
-      document.getElementById("summernote_here").innerHTML = decodedContent;
+      // document.getElementById("summernote_here").innerHTML = decodedContent;
 </script>
     
     <?php include('../../error_handler.php'); ?>
