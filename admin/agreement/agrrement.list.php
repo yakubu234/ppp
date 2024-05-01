@@ -119,7 +119,7 @@ include('../../includes/header.php');
      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     
     <script>
-      $(document).ready(function() {
+      // $(document).ready(function() {
 
         $(window).load(function(){
     // create editor 
@@ -136,7 +136,7 @@ include('../../includes/header.php');
           // $('#summernote_here').summernote({
           //   height: 300
           // });
-      });
+      // });
 
       // var encodedContent = "<?php //echo $agreementDescription; ?>";
       // var decodedContent = encodedContent;
