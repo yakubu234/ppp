@@ -122,16 +122,16 @@ include('../../includes/header.php');
       // $(document).ready(function() {
 
         $(window).load(function(){
-    // create editor 
-          $('#summernote_here').summernote({
-            height: 300
-          });
-
               // set content 
               <?php if(isset($agreementDescription)) { ?>
                 var codeings = '<?php echo $agreementDescription;  ?>';
-              $('#summernote_here').summernote('code', codeings);
+              $('#summernote_here').html(codeings);
               <?php } ?>
+
+               $('#summernote_here').summernote({
+                  height: 300
+                });
+
           });
 
           // $('#summernote_here').summernote({
