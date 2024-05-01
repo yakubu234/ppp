@@ -129,7 +129,8 @@ include('../../includes/header.php');
 
               // set content 
               <?php if(isset($agreementDescription)) { ?>
-              $('#summernote_here').code('<?php echo $agreementDescription;  ?>');
+                var codeings = '<?php echo $agreementDescription;  ?>';
+              $('#summernote_here').summernote('code', codeings);
               <?php } ?>
           });
 
