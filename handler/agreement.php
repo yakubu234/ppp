@@ -24,7 +24,7 @@ if (isset($_POST['description'])) {
 
     $id = isset($_POST['item_id']) ?$_POST['item_id']:"";
     // $description = htmlentities($_POST['description']);
-    $description = $_POST['description'];
+    $description = htmlentities(htmlentities($_POST['description'], ENT_QUOTES), ENT_QUOTES);
     if(!empty($id)){
         $sql="update agreement set description=:description";
         $query = $dbh->prepare($sql);

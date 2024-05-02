@@ -11,9 +11,12 @@ $userId =$_SESSION['obbsuid'] ;
 
     $service = $query->fetch(PDO::FETCH_ASSOC);
 
-    $agreementDescription = isset($service['description']) ? $service['description']: "Type here";
-  
+    $agreementDescription = isset($service['description']) ? html_entity_decode(html_entity_decode($service['description'], ENT_QUOTES), ENT_QUOTES): "Type here";
 
+    $escapedDescription = str_replace("'", "\\'", $agreementDescription);
+  
+    // print_r($agreementDescription);
+    // die;
 // Access the count using the key 'total_bookings
 include('../../includes/header.php'); 
 
@@ -119,30 +122,19 @@ include('../../includes/header.php');
      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     
     <script>
-      // $(document).ready(function() {
+      $(document).ready(function() {
+        $('#summernote_here').summernote({
+          height: 300
+        });
 
-        $(window).load(function(){
-              // set content 
-              var codeings = '<?php echo $agreementDescription;  ?>';
-              if(codeings){
-                $('#summernote_here').html(codeings);
-              }
-
-               $('#summernote_here').summernote({
-                  height: 300
-                });
-
-          });
-
-          // $('#summernote_here').summernote({
-          //   height: 300
-          // });
-      // });
-
-      // var encodedContent = "<?php //echo $agreementDescription; ?>";
-      // var decodedContent = encodedContent;
-      // Set the decoded HTML content to a div element
-      // document.getElementById("summernote_here").innerHTML = decodedContent;
+        // set content 
+        var codeings = '<?php echo $escapedDescription; ?>';
+        if (codeings) {
+          console.log('i am here');
+          console.log(codeings);
+          $('#summernote_here').summernote('code', codeings);
+        }
+      });
 </script>
     
     <?php include('../../error_handler.php'); ?>

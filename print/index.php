@@ -314,8 +314,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
                         <!--Invoice additional info start here -->
                         <div class="invo-addition-wrap pt-50">
                             <div class=" width-100 ">
-                                <h3 class="font-md color-light-black text-left">AGREEMENT </h3>
-                                <div class="font-sm color-grey pt-10"> <?php echo isset($agreement['description'])?$agreement['description']: ""; ?></div>
+                                <!-- <h3 class="font-md color-light-black text-left">AGREEMENT </h3> -->
+                                <div class="font-sm color-grey pt-10"> <?php 
+                                $agreementDescription = isset($agreement['description']) ? html_entity_decode(html_entity_decode($agreement['description'], ENT_QUOTES), ENT_QUOTES): "";
+                                $escapedDescription = str_replace("'", "\\'", $agreementDescription);
+                                echo $escapedDescription; ?></div>
                                 </p>
                             </div>
                         </div>
