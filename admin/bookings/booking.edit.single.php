@@ -482,7 +482,48 @@
     <!-- Plugin used-->
     <script>
 
+            function removeCommas(formattedAmount) {
+        // """
+        // Removes commas from a formatted naira string.
 
+        // Args:
+        //     formattedAmount: The formatted naira string with commas.
+
+        // Returns:
+        //     The original number without commas as a float.
+        // """
+
+        // Replace commas with an empty string using regular expression
+        const amountWithoutCommas = formattedAmount.replace(/,/g, "");
+
+        // Convert the string to a float for calculations
+        return parseFloat(amountWithoutCommas);
+      }
+
+      function formatMoney(amount) {
+          // Check if amount is less than 4 digits, no need for formatting
+          // if (absoluteAmount.toString().length < 4) {
+          //   return sign + "₦"+ absoluteAmount+".00";
+          // }
+          const sign = amount < 0 ? "-" : "";
+          const absoluteAmount = Math.abs(amount);
+        
+          // Convert to string to handle large numbers more reliably
+          const amountString = absoluteAmount.toString();
+        
+          // Separate millions (if any)
+          const millionsPart = amountString.slice(0, -6); // Extract up to 6 digits from the left (millions)
+          const remainingPart = amountString.slice(-6); // Extract the last 6 digits (remaining)
+        
+          // Format remaining amount with commas (manual formatting)
+          const formattedRemaining = remainingPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        
+          // Combine millions and remaining parts
+          const formattedAmount = sign + (millionsPart ? millionsPart + ',' : '') + formattedRemaining + ".00";
+        
+          return "₦" + formattedAmount;
+
+      }
       // get the records coming from the db
       var db_records = <?php echo json_encode($data); ?>;
       console.log(db_records);
@@ -528,7 +569,14 @@
         document.getElementById('time_start').value = getTimeValue(db_records.time_start)
         document.getElementById('time_end').value = getTimeValue(db_records.time_end)
         document.getElementById('discount_field').value = db_records.discount
-        document.getElementById('amount_paid__field').value = db_records.discount  //convert amount here
+
+        let amount_paid = 0;
+        //loop throught to get the information 
+        for (const payment of db_records.payments_details) {
+          amount_paid = amount_paid + removeCommas(payment.amount);
+        }
+
+        document.getElementById('amount_paid__field').value = amount_paid  //convert amount here
         document.getElementById('optional_message').value = db_records.message
 
         //
@@ -542,14 +590,53 @@
               matchingOption.selected = true;
           }
 
+
+
+        document.getElementById('hiddend_select').value = "enabled";
+
+        var tbody = document.querySelector("#cart tbody");
+          let selectedItem;
+          let db_value_service = 0;
+        //loop throught to get the information 
+        for (const item of db_records.services) {
+            selectedItem = item;
+            var newRow = tbody.insertRow(); 
+            let selected_id = selectedItem.item_id; //sort this by maping the name with wha we have in services 
+            // Set the data-id attribute to the selected item ID for the row
+            newRow.setAttribute("data-id", selected_id);
+
+            // by default quantity is 1 and price will be used to calculate 
+            let totalPrice = parseFloat(selectedItem.quantity * removeCommas(selectedItem.price)).toFixed(2);
+            totalPrice = formatMoney(totalPrice);
+            let selectedPrice = formatMoney(removeCommas(selectedItem.price));
+            newRow.innerHTML = `
+              <td></td>  
+              <td>${selectedItem.service_name}</td>
+              <td><input type="hidden" id="item_price_`+selectedItem.item_id+`"  value="`+selectedItem.price+`" name="price[]" />
+              ${selectedPrice}</td>
+              <td>
+                <input type="hidden" name="item_id[]" value="`+selectedItem.item_id+`" />
+                <input type="hidden" value="1" id="quantity_original_`+selectedItem.item_id+`" name="quantity[]" />
+                <input type="number" min="1" value="1" id="quantity_calc_`+selectedItem.item_id+`"  oninput="handleQuantityChange(this.id, this.value)" />
+              </td>
+              <td> <span id="span_`+selectedItem.item_id+`">${totalPrice}</span></td>
+              <td><button class="btn btn-square btn-danger" onclick="removeRow(this)" title="delete" type="button"><i class="fa fa-trash-o"></i></button> </td>
+            `; 
+
+            db_value_service = selectedItem.item_id;
+        }
+
           //copy from here
          var selectElementService = document.getElementById('select_services');
-          const matchingOptionService = selectElementService.querySelector(`option[value="${db_records.type_of_event}"]`);
+          const matchingOptionService = selectElementService.querySelector(`option[value="${db_value_service}"]`);
           // Set the selected attribute if a matching option is found
           if (matchingOptionService) {
               matchingOptionService.selected = true;
           }
           // end copy here
+        
+        updateSerialNumbers();
+
 
       }
       window.setTimeout(function() {
@@ -606,51 +693,10 @@
   //         }
   //       };
 
-      function removeCommas(formattedAmount) {
-        // """
-        // Removes commas from a formatted naira string.
 
-        // Args:
-        //     formattedAmount: The formatted naira string with commas.
-
-        // Returns:
-        //     The original number without commas as a float.
-        // """
-
-        // Replace commas with an empty string using regular expression
-        const amountWithoutCommas = formattedAmount.replace(/,/g, "");
-
-        // Convert the string to a float for calculations
-        return parseFloat(amountWithoutCommas);
-      }
-
-      function formatMoney(amount) {
-          // Check if amount is less than 4 digits, no need for formatting
-          // if (absoluteAmount.toString().length < 4) {
-          //   return sign + "₦"+ absoluteAmount+".00";
-          // }
-          const sign = amount < 0 ? "-" : "";
-          const absoluteAmount = Math.abs(amount);
-        
-          // Convert to string to handle large numbers more reliably
-          const amountString = absoluteAmount.toString();
-        
-          // Separate millions (if any)
-          const millionsPart = amountString.slice(0, -6); // Extract up to 6 digits from the left (millions)
-          const remainingPart = amountString.slice(-6); // Extract the last 6 digits (remaining)
-        
-          // Format remaining amount with commas (manual formatting)
-          const formattedRemaining = remainingPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        
-          // Combine millions and remaining parts
-          const formattedAmount = sign + (millionsPart ? millionsPart + ',' : '') + formattedRemaining + ".00";
-        
-          return "₦" + formattedAmount;
-
-      }
       // all_services = JSON.parse(fullServices);
       function addToCart() {
-        var select = document.getElementById("exampleFormControlSelect17");
+        var select = document.getElementById("select_services");
         var selected_id = select.options[select.selectedIndex].value;
 
          // Check if a row already exists for the selected item

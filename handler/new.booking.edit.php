@@ -21,11 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Log the form data
     file_put_contents('form_data.log', print_r($_POST, true), FILE_APPEND | LOCK_EX);
 
-    	$_POST['booking_id']// run this for update
-
+    	// run this for update
 
          $bookingsData = [
-            'bookign_id'=> $_POST['user_id'].$uniqueId = uniqid(),
+            'bookign_id'=> $_POST['booking_id'],
             'user_id' => $_POST['user_id'],
             'event_type' => $_POST['type_of_event'],
             'number_of_guest' => $_POST['number_of_guest'],
@@ -46,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
          ];
 
          //insert into bookings
-            $sql = "INSERT INTO bookings (user_id, event_type, number_of_guest, date_start, time_start, time_end, tax, message, discount, date_of_application,bookign_id,customer_email, customer_fullname, customer_phone, customer_address, customer_contact_person_fullname, customer_contact_person_phone,admin_id) 
-            VALUES (:user_id, :event_type, :number_of_guest, :date_start, :time_start, :time_end, :tax, :message, :discount, :date_of_application, :bookign_id, :customer_email, :customer_fullname, :customer_phone, :customer_address, :customer_contact_person_fullname, :customer_contact_person_phone, :admin_id)";
+            $sql = "UPDATE bookings set user_id=:user_id, event_type=:event_type, number_of_guest=:number_of_guest, date_start=:date_start, time_start=:time_start, time_end=:time_end, tax=:tax, message=:message, discount=:discount, date_of_application=:date_of_application,customer_email=:customer_email, customer_fullname=:customer_fullname, customer_phone=:customer_phone, customer_address=:customer_address, customer_contact_person_fullname=:customer_contact_person_fullname, customer_contact_person_phone=:customer_contact_person_phone,admin_id=:admin_id WHERE booking_id=:booking_id";
+            
             $query = $dbh->prepare($sql);
 
             // Bind parameters
@@ -60,6 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $query->bindParam(':' . $column, $null, PDO::PARAM_NULL);
                 }
             }
+
+            file_put_contents('form_data.log', print_r($query->queryString, true), FILE_APPEND | LOCK_EX);
 
             if($query->execute()){
                 $lastInsertedId =  $dbh->lastInsertId();
@@ -75,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // Process services data
                 $finalAmount = 0.0;
                 $services = [];
+                $isertedIdsServices = [];
                 for ($i = 0; $i < count($_POST['item_id']); $i++) {
                     $itemId = $_POST['item_id'][$i];
                     $found_service = array_values(array_filter($databaseService, function($existing_service) use ($itemId) {
@@ -94,9 +96,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $query->bindParam(':amount', $found_service[0]['price'], PDO::PARAM_STR);
                     $query->execute();
                     $finalAmount = $finalAmount+ ($_POST['quantity'][$i] * remove_commas($found_service[0]['price']));
-
+                    $isertedIdsServices[] = $dbh->lastInsertId(); // get for deleting multiple
                 }
 
+                file_put_contents('form_data.log', print_r($isertedIdsServices, true), FILE_APPEND | LOCK_EX);
                 // update the bookings with amount
                 $status = "active";
                 $paymentStatus = (($finalAmount - $_POST['amount_paid']) <= 0)?"completed":"part payment";
@@ -115,12 +118,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $action = "successfully added ₦$finalAmount being paid as $paymentStatus  payment for booking id  $booking_id ";
                 logAuditTrail($currentUser['id'], $action, $currentUser['email'], $currentUser['fullname'], $bookingsData['bookign_id']);
 
+                $isertedIdsPayment = [];
                 $sql = "INSERT INTO payments (booking_id, amount) VALUES (:booking_id, :amount)";
                 $query = $dbh->prepare($sql);
                 $query->bindParam(':booking_id', $bookingsData['bookign_id'], PDO::PARAM_STR);
                 $query->bindParam(':amount', $_POST['amount_paid'], PDO::PARAM_STR);
                 $query->execute();
                 // Send response back to client
+
+                $isertedIdsPayment[] = $dbh->lastInsertId(); // get for deleting multiple
+                file_put_contents('form_data.log', print_r($isertedIdsPayment, true), FILE_APPEND | LOCK_EX);
+
                 $response = ['success' => true, 'message' => 'Form data processed successfully', 'id' => $bookingsData['bookign_id']];
                 http_response_code(200); // OK
                 echo json_encode($response);
