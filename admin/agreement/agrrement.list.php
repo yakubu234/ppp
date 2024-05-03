@@ -27,10 +27,11 @@ include('../../includes/header.php');
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
     <link id="color" rel="stylesheet" href="../../assets/css/color-1.css" media="screen">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"> -->
 
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="../../assets/css/responsive.css">
+    <link href="../../summernote/summernote-lite.min.css" rel="stylesheet">
   </head>
   <body> 
     <!-- loader starts-->
@@ -77,8 +78,8 @@ include('../../includes/header.php');
                           <textarea class="form-control" row="10"  id="summernote_here" name="description" required placeholder="Enter Descriptionl"></textarea>
                         </div>
                         
-
-                        <div class="col-12">
+                        <div class="col-sm-10" ></div>
+                        <div class="col-2" style="float: right;">
                           <button class="btn btn-primary" type="submit">Submit </button>
                         </div>
                       </form>
@@ -119,12 +120,14 @@ include('../../includes/header.php');
     <!-- Theme js-->
     <script src="../../assets/js/script.js"></script>
     <script src="../../assets/js/theme-customizer/customizer.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+    <script src="../../summernote/summernote-lite.min.js"></script>
+     <!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script> -->
     
     <script>
       $(document).ready(function() {
         $('#summernote_here').summernote({
-          height: 300
+          height: 450
         });
 
         // set content 
