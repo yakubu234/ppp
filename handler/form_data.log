@@ -1,42 +1,109 @@
 Array
 (
-    [booking_id] => 5662cb98047ff6
+    [booking_update_id] => undefined
+    [booking_id] => 5663523e2a2f0f
     [user_id] => 5
     [user_phone] => 2039832904
     [email] => abiola@yakubu.com
     [fullname] => Abiola Sunday
     [form_action] => update_new_booking
-    [customer_email] => sind njsn
-    [customer_fullname] => wnsjdjbs
-    [customer_phone] => wnsjddb
-    [customer_address] => dubsu
-    [customer_contact_person_fullname] => sadus
-    [customer_contact_person_phone] => andub
-    [type_of_event] => Birthday Party
-    [number_of_guest] => 1203
-    [from] => 2024-05-09
-    [time_start] => 09:38
-    [time_end] => 14:40
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 18:53
+    [time_end] => 23:49
     [price] => Array
         (
-            [0] => 450,000,000
-            [1] => 3090990
+            [0] => 50,000
+            [1] => 450,000,000
+            [2] => 3090990
         )
 
     [item_id] => Array
         (
-            [0] => 4
-            [1] => 2
+            [0] => 7
+            [1] => 4
+            [2] => 2
         )
 
     [quantity] => Array
         (
-            [0] => 2
-            [1] => 1
+            [0] => 5
+            [1] => 2
+            [2] => 1
         )
 
-    [discount] => 2000
-    [amount_paid] => 200000000
+    [discount] => 100000000
+    [amount_paid] => 400000000
+    [message] => a new message to leave behind
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [0] => 54
+    [1] => 55
+    [2] => 56
+)
+Array
+(
+    [booking_update_id] => undefined
+    [booking_id] => 5663523e2a2f0f
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 18:53
+    [time_end] => 23:49
+    [price] => Array
+        (
+            [0] => 50,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 7
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 1
+        )
+
+    [discount] => 100000000
+    [amount_paid] => 400000000
+    [message] => a new message to leave behind
     [consent_check] => Array
         (
             [0] => on
@@ -45,47 +112,991 @@ Array
 )
 Array
 (
-    [booking_id] => 5662cb98047ff6
+    [booking_update_id] => undefined
+    [booking_id] => 5663523e2a2f0f
     [user_id] => 5
     [user_phone] => 2039832904
     [email] => abiola@yakubu.com
     [fullname] => Abiola Sunday
     [form_action] => update_new_booking
-    [customer_email] => sind njsn
-    [customer_fullname] => wnsjdjbs
-    [customer_phone] => wnsjddb
-    [customer_address] => dubsu
-    [customer_contact_person_fullname] => sadus
-    [customer_contact_person_phone] => andub
-    [type_of_event] => Birthday Party
-    [number_of_guest] => 1203
-    [from] => 2024-05-09
-    [time_start] => 09:38
-    [time_end] => 14:40
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 18:53
+    [time_end] => 23:49
     [price] => Array
         (
-            [0] => 450,000,000
-            [1] => 3090990
+            [0] => 50,000
+            [1] => 450,000,000
+            [2] => 3090990
         )
 
     [item_id] => Array
         (
-            [0] => 4
-            [1] => 2
+            [0] => 7
+            [1] => 4
+            [2] => 2
         )
 
     [quantity] => Array
         (
-            [0] => 2
-            [1] => 1
+            [0] => 5
+            [1] => 2
+            [2] => 1
         )
 
-    [discount] => 2000
-    [amount_paid] => 200000000
+    [discount] => 100000000
+    [amount_paid] => 400000000
+    [message] => a new message to leave behind
     [consent_check] => Array
         (
             [0] => on
         )
 
 )
-UPDATE bookings set user_id=:user_id, event_type=:event_type, number_of_guest=:number_of_guest, date_start=:date_start, time_start=:time_start, time_end=:time_end, tax=:tax, message=:message, discount=:discount, date_of_application=:date_of_application,customer_email=:customer_email, customer_fullname=:customer_fullname, customer_phone=:customer_phone, customer_address=:customer_address, customer_contact_person_fullname=:customer_contact_person_fullname, customer_contact_person_phone=:customer_contact_person_phone,admin_id=:admin_id WHERE booking_id=:booking_id
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [0] => 57
+    [1] => 58
+    [2] => 59
+)
+Array
+(
+    [booking_update_id] => 20
+    [booking_id] => 5663523e2a2f0f
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 18:53
+    [time_end] => 23:49
+    [price] => Array
+        (
+            [0] => 50,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 7
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 1
+        )
+
+    [discount] => 100000000
+    [amount_paid] => 400000000
+    [message] => a new message to leave behind
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [booking_update_id] => 20
+    [booking_id] => 5663523e2a2f0f
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 18:53
+    [time_end] => 23:49
+    [price] => Array
+        (
+            [0] => 50,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 7
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 1
+        )
+
+    [discount] => 100000000
+    [amount_paid] => 400000000
+    [message] => a new message to leave behind
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [0] => 60
+    [1] => 61
+    [2] => 62
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+0Array
+(
+    [booking_update_id] => 20
+    [booking_id] => 5663523e2a2f0f
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 18:53
+    [time_end] => 23:49
+    [price] => Array
+        (
+            [0] => 50,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 7
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 1
+        )
+
+    [discount] => 100000000
+    [amount_paid] => 400000000
+    [message] => a new message to leave behind
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [booking_update_id] => 20
+    [booking_id] => 5663523e2a2f0f
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 18:53
+    [time_end] => 23:49
+    [price] => Array
+        (
+            [0] => 50,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 7
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 1
+        )
+
+    [discount] => 100000000
+    [amount_paid] => 400000000
+    [message] => a new message to leave behind
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [0] => 63
+    [1] => 64
+    [2] => 65
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+0Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => first bookings
+    [customer_fullname] => full naem
+    [customer_phone] => ekfjfd
+    [customer_address] => dsnjne
+    [customer_contact_person_fullname] => wduwhe38
+    [customer_contact_person_phone] => e9ie348
+    [type_of_event] => Charity
+    [number_of_guest] => dherbrf
+    [from] => 2024-05-25
+    [time_start] => 21:20
+    [time_end] => 00:21
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 450,000,000
+            [2] => 50,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 4
+            [2] => 7
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [amount_paid] => 20000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => first bookings
+    [customer_fullname] => full naem
+    [customer_phone] => ekfjfd
+    [customer_address] => dsnjne
+    [customer_contact_person_fullname] => wduwhe38
+    [customer_contact_person_phone] => e9ie348
+    [type_of_event] => Charity
+    [number_of_guest] => dherbrf
+    [from] => 2024-05-25
+    [time_start] => 21:20
+    [time_end] => 00:21
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 450,000,000
+            [2] => 50,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 4
+            [2] => 7
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+        )
+
+    [amount_paid] => 20000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 203
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+            [2] => 200
+            [3] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+            [2] => 3
+            [3] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+            [3] => 1
+        )
+
+    [amount_paid] => 200304343
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 203
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+            [2] => 200
+            [3] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+            [2] => 3
+            [3] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+            [2] => 1
+            [3] => 1
+        )
+
+    [amount_paid] => 200304343
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => eruenb
+    [customer_fullname] => uwedsw
+    [customer_phone] => dsucds
+    [customer_address] => wdsube
+    [customer_contact_person_fullname] => dsub
+    [customer_contact_person_phone] => dubsew
+    [type_of_event] => Community
+    [number_of_guest] => 323343
+    [from] => 2024-05-11
+    [time_start] => 21:23
+    [time_end] => 01:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+        )
+
+    [amount_paid] => 120334323
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => new_booking
+    [customer_email] => eruenb
+    [customer_fullname] => uwedsw
+    [customer_phone] => dsucds
+    [customer_address] => wdsube
+    [customer_contact_person_fullname] => dsub
+    [customer_contact_person_phone] => dubsew
+    [type_of_event] => Community
+    [number_of_guest] => 323343
+    [from] => 2024-05-11
+    [time_start] => 21:23
+    [time_end] => 01:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 1
+        )
+
+    [amount_paid] => 120334323
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [booking_update_id] => 2
+    [booking_id] => 5663546ec18d78
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 450,000,000
+            [2] => 80,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 4
+            [2] => 1
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 2
+            [2] => 5
+        )
+
+    [discount] => 100000000
+    [amount_paid] => 500000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [booking_update_id] => 2
+    [booking_id] => 5663546ec18d78
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 3090990
+            [1] => 450,000,000
+            [2] => 80,000
+        )
+
+    [item_id] => Array
+        (
+            [0] => 2
+            [1] => 4
+            [2] => 1
+        )
+
+    [quantity] => Array
+        (
+            [0] => 1
+            [1] => 2
+            [2] => 5
+        )
+
+    [discount] => 100000000
+    [amount_paid] => 500000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [0] => 10
+    [1] => 11
+    [2] => 12
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+0Array
+(
+    [booking_update_id] => 2
+    [booking_id] => 5663546ec18d78
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 1
+            [2] => 10
+        )
+
+    [discount] => 120000000
+    [amount_paid] => 600000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [booking_update_id] => 2
+    [booking_id] => 5663546ec18d78
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 10
+        )
+
+    [discount] => 120000000
+    [amount_paid] => 600000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Array
+(
+    [booking_update_id] => 2
+    [booking_id] => 5663546ec18d78
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 10
+        )
+
+    [discount] => 120000000
+    [amount_paid] => 600000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [0] => 13
+    [1] => 14
+    [2] => 15
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [booking_update_id] => 2
+    [booking_id] => 5663546ec18d78
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 10
+        )
+
+    [discount] => 120000000
+    [amount_paid] => 600000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [0] => 16
+    [1] => 17
+    [2] => 18
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [booking_update_id] => 2
+    [booking_id] => 5663546ec18d78
+    [user_id] => 5
+    [user_phone] => 2039832904
+    [email] => abiola@yakubu.com
+    [fullname] => Abiola Sunday
+    [form_action] => update_new_booking
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => 2024-05-17
+    [time_start] => 21:22
+    [time_end] => 02:24
+    [price] => Array
+        (
+            [0] => 80,000
+            [1] => 450,000,000
+            [2] => 3090990
+        )
+
+    [item_id] => Array
+        (
+            [0] => 1
+            [1] => 4
+            [2] => 2
+        )
+
+    [quantity] => Array
+        (
+            [0] => 5
+            [1] => 2
+            [2] => 10
+        )
+
+    [discount] => 120000000
+    [amount_paid] => 600000000
+    [consent_check] => Array
+        (
+            [0] => on
+        )
+
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+Array
+(
+    [0] => 19
+    [1] => 20
+    [2] => 21
+)
+Error deleting records: Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+0

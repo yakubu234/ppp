@@ -75,6 +75,7 @@
                     <div id="msform">
                       
                       <form class="stepper-one row g-3 needs-validation custom-input" novalidate="">
+                      <input type="hidden" value="" id="booking_update_id" name="booking_update_id"  />
                       <input type="hidden" value="" id="old_booking_id" name="booking_id"  />
                       <input type="hidden" value="<?php echo $currentUser['id']; ?>" name="user_id"  />
                       <input type="hidden" value="<?php echo $currentUser['phone']; ?>" name="user_phone"  />
@@ -552,6 +553,8 @@
       }
 
       function mountDataFromDb(db_records){
+        // booking_update_id
+        document.getElementById('booking_update_id').value = db_records.id
         document.getElementById('old_booking_id').value = db_records.bookign_id
         document.getElementById('email-basic-wizard-email').value = db_records.customer_email
         document.getElementById('firstnamewizardfullname').value = db_records.customer_fullname

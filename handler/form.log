@@ -1,0 +1,660 @@
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 16:48 PM
+    [time_end] => 21:50 PM
+    [customer_email] => thhrr
+    [customer_fullname] => dshjdbh
+    [customer_phone] => 93039393093
+    [customer_address] => 233 2hbhbhwh
+    [customer_contact_person_fullname] => shhsebg
+    [customer_contact_person_phone] => jnjshsb
+    [amount_paid] => 400000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Concert
+    [number_of_guest] => 1203
+    [from] => Friday, May 10, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => this is the note
+    [discount] => 30000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 2
+                    [price] => 450,000,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 1
+                    [price] => 80,000
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 18:53 PM
+    [time_end] => 23:49 PM
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [amount_paid] => 200000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Community
+    [number_of_guest] => 230
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 3
+                    [service_name] => Photo Booth Hire
+                    [service_description] => (early equipment setup included)
+                    [quantity] => 1
+                    [price] => 200
+                )
+
+            [3] => Array
+                (
+                    [item_id] => 7
+                    [service_name] => Traffic controllers
+                    [service_description] => Controlling traffic and parking
+                    [quantity] => 1
+                    [price] => 50,000
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 18:53 PM
+    [time_end] => 23:49 PM
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [amount_paid] => 400000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => a new message to leave behind
+    [discount] => 100000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 7
+                    [service_name] => Traffic controllers
+                    [service_description] => Controlling traffic and parking
+                    [quantity] => 5
+                    [price] => 50,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 2
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 18:53 PM
+    [time_end] => 23:49 PM
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [amount_paid] => 400000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => a new message to leave behind
+    [discount] => 100000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 7
+                    [service_name] => Traffic controllers
+                    [service_description] => Controlling traffic and parking
+                    [quantity] => 5
+                    [price] => 50,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 2
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 18:53 PM
+    [time_end] => 23:49 PM
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [amount_paid] => 400000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => a new message to leave behind
+    [discount] => 100000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 7
+                    [service_name] => Traffic controllers
+                    [service_description] => Controlling traffic and parking
+                    [quantity] => 5
+                    [price] => 50,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 2
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 18:53 PM
+    [time_end] => 23:49 PM
+    [customer_email] => abiola
+    [customer_fullname] => customer@email.com
+    [customer_phone] => 090909099099
+    [customer_address] => address
+    [customer_contact_person_fullname] => full name
+    [customer_contact_person_phone] => 00902909003
+    [amount_paid] => 400000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Pre Engagement
+    [number_of_guest] => 500
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => a new message to leave behind
+    [discount] => 100000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 7
+                    [service_name] => Traffic controllers
+                    [service_description] => Controlling traffic and parking
+                    [quantity] => 5
+                    [price] => 50,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 2
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 21:20 PM
+    [time_end] => 00:21 AM
+    [customer_email] => first bookings
+    [customer_fullname] => full naem
+    [customer_phone] => ekfjfd
+    [customer_address] => dsnjne
+    [customer_contact_person_fullname] => wduwhe38
+    [customer_contact_person_phone] => e9ie348
+    [amount_paid] => 20000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Charity
+    [number_of_guest] => dherbrf
+    [from] => Saturday, May 25, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 7
+                    [service_name] => Traffic controllers
+                    [service_description] => Controlling traffic and parking
+                    [quantity] => 1
+                    [price] => 50,000
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 21:22 PM
+    [time_end] => 02:24 AM
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [amount_paid] => 200304343
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 203
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 1
+                    [price] => 80,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 3
+                    [service_name] => Photo Booth Hire
+                    [service_description] => (early equipment setup included)
+                    [quantity] => 1
+                    [price] => 200
+                )
+
+            [3] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 21:23 PM
+    [time_end] => 01:24 AM
+    [customer_email] => eruenb
+    [customer_fullname] => uwedsw
+    [customer_phone] => dsucds
+    [customer_address] => wdsube
+    [customer_contact_person_fullname] => dsub
+    [customer_contact_person_phone] => dubsew
+    [amount_paid] => 120334323
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Community
+    [number_of_guest] => 323343
+    [from] => Saturday, May 11, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 1
+                    [price] => 80,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 21:22 PM
+    [time_end] => 02:24 AM
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [amount_paid] => 500000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 100000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 2
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 5
+                    [price] => 80,000
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 21:22 PM
+    [time_end] => 02:24 AM
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [amount_paid] => 600000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 120000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 5
+                    [price] => 80,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 10
+                    [price] => 3090990
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 21:22 PM
+    [time_end] => 02:24 AM
+    [customer_email] => another bookings here
+    [customer_fullname] => 3oerjw
+    [customer_phone] => 39wer8ew
+    [customer_address] => erfduner
+    [customer_contact_person_fullname] => eide8ww
+    [customer_contact_person_phone] => emidfe8
+    [amount_paid] => 600000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Community
+    [number_of_guest] => 500
+    [from] => Friday, May 17, 2024
+    [apply_date] => Friday, May 3, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 120000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 5
+                    [price] => 80,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 2
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 10
+                    [price] => 3090990
+                )
+
+        )
+
+)

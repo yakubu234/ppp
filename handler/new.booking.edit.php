@@ -20,9 +20,7 @@ $userList = $query->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Log the form data
     file_put_contents('form_data.log', print_r($_POST, true), FILE_APPEND | LOCK_EX);
-
     	// run this for update
-
          $bookingsData = [
             'bookign_id'=> $_POST['booking_id'],
             'user_id' => $_POST['user_id'],
@@ -34,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             'tax' => isset($_POST['tax']) ? $_POST['tax']:"",
             'message' => isset($_POST['message']) ? $_POST['message']:"",
             'discount' => isset( $_POST['discount']) ? $_POST['discount']:"",
-            'date_of_application' => formatDate(date('Y-m-d')),
             'customer_email' => $_POST['customer_email'],
             'customer_fullname' => $_POST['customer_fullname'],
             'customer_phone' => $_POST['customer_phone'],
@@ -45,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
          ];
 
          //insert into bookings
-            $sql = "UPDATE bookings set user_id=:user_id, event_type=:event_type, number_of_guest=:number_of_guest, date_start=:date_start, time_start=:time_start, time_end=:time_end, tax=:tax, message=:message, discount=:discount, date_of_application=:date_of_application,customer_email=:customer_email, customer_fullname=:customer_fullname, customer_phone=:customer_phone, customer_address=:customer_address, customer_contact_person_fullname=:customer_contact_person_fullname, customer_contact_person_phone=:customer_contact_person_phone,admin_id=:admin_id WHERE booking_id=:booking_id";
+            $sql = "UPDATE bookings set user_id=:user_id, event_type=:event_type, number_of_guest=:number_of_guest, date_start=:date_start, time_start=:time_start, time_end=:time_end, tax=:tax, message=:message, discount=:discount, customer_email=:customer_email, customer_fullname=:customer_fullname, customer_phone=:customer_phone, customer_address=:customer_address, customer_contact_person_fullname=:customer_contact_person_fullname, customer_contact_person_phone=:customer_contact_person_phone,admin_id=:admin_id WHERE bookign_id=:bookign_id";
             
             $query = $dbh->prepare($sql);
 
@@ -60,10 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 }
             }
 
-            file_put_contents('form_data.log', print_r($query->queryString, true), FILE_APPEND | LOCK_EX);
-
             if($query->execute()){
-                $lastInsertedId =  $dbh->lastInsertId();
+                $lastInsertedId = $_POST['booking_update_id'];
 
                 //  select all services 
                 $status = "enabled";
@@ -72,6 +67,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $query->bindParam(':status', $status, PDO::PARAM_STR);
                 $query->execute();
                 $databaseService = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                // delete from booking services where id is not equal to id that was just inserted
+                $del = "DELETE FROM bookings_services 
+                        WHERE bookings_id = :bookings_id";
+                $stmt = $dbh->prepare($del);
+                // Bind parameters
+                $stmt->bindParam(':bookings_id', $lastInsertedId, PDO::PARAM_STR); 
+                // Execute the prepared statement
+                $stmt->execute();
+                // Check for errors
+                if ($stmt->errorCode() !== 0) {
+                    $error = $stmt->errorInfo();
+                    file_put_contents('form_data.log', ["Error deleting records: " . $error[2], print_r($error, true)], FILE_APPEND | LOCK_EX);
+                } 
 
                 // Process services data
                 $finalAmount = 0.0;
@@ -99,7 +108,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $isertedIdsServices[] = $dbh->lastInsertId(); // get for deleting multiple
                 }
 
+                
                 file_put_contents('form_data.log', print_r($isertedIdsServices, true), FILE_APPEND | LOCK_EX);
+
+
                 // update the bookings with amount
                 $status = "active";
                 $paymentStatus = (($finalAmount - $_POST['amount_paid']) <= 0)?"completed":"part payment";
@@ -112,6 +124,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $query-> bindParam(':status', $status, PDO::PARAM_STR);
                 $query-> bindParam(':id', $lastInsertedId, PDO::PARAM_STR);
                 $query->execute();
+                 if ($query->errorCode() !== 0) {
+                    $error = $query->errorInfo();
+                    file_put_contents('form_data.log', ["Error deleting records: " . $error[2], print_r($error, true)], FILE_APPEND | LOCK_EX);
+                } 
                 
                 // insert into payments 
                 $booking_id  = $bookingsData['bookign_id'];
@@ -124,10 +140,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $query->bindParam(':booking_id', $bookingsData['bookign_id'], PDO::PARAM_STR);
                 $query->bindParam(':amount', $_POST['amount_paid'], PDO::PARAM_STR);
                 $query->execute();
+                $id = $dbh->lastInsertId();
+                //delete from payment the former payment histories since the new payment is added
+                $del = "DELETE FROM payments 
+                        WHERE booking_id = :bookings_id 
+                        AND id != :excluded_id";
+                $stmt = $dbh->prepare($del);
+                // Bind parameters
+                $stmt->bindParam(':bookings_id', $bookingsData['bookign_id'], PDO::PARAM_STR); 
+                $stmt->bindParam(':excluded_id', $id, PDO::PARAM_STR);
+                $stmt->execute();
                 // Send response back to client
-
-                $isertedIdsPayment[] = $dbh->lastInsertId(); // get for deleting multiple
-                file_put_contents('form_data.log', print_r($isertedIdsPayment, true), FILE_APPEND | LOCK_EX);
+                file_put_contents('form_data.log', print_r($dbh->lastInsertId(), true), FILE_APPEND | LOCK_EX);
 
                 $response = ['success' => true, 'message' => 'Form data processed successfully', 'id' => $bookingsData['bookign_id']];
                 http_response_code(200); // OK
