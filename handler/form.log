@@ -658,3 +658,186 @@ Array
         )
 
 )
+Array
+(
+    [user_id] => 5
+    [form_action] => new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 20:48 PM
+    [time_end] => 23:50 PM
+    [customer_email] => wasge@egdg.djd
+    [customer_fullname] => full name
+    [customer_phone] => 9099038483
+    [customer_address] => 12, something off.
+    [customer_contact_person_fullname] => new name
+    [customer_contact_person_phone] => 0904848049
+    [amount_paid] => 200000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 239
+    [from] => Friday, May 10, 2024
+    [apply_date] => Monday, May 6, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 2
+                    [price] => 80,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 3
+                    [service_name] => Photo Booth Hire
+                    [service_description] => (early equipment setup included)
+                    [quantity] => 10
+                    [price] => 200
+                )
+
+            [3] => Array
+                (
+                    [item_id] => 2
+                    [service_name] => Party DJ
+                    [service_description] => (we install the DJ equipment 1 hour before your selected event start time)
+                    [quantity] => 1
+                    [price] => 3090990
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 20:48 PM
+    [time_end] => 23:50 PM
+    [customer_email] => wasge@egdg.djd
+    [customer_fullname] => full name
+    [customer_phone] => 9099038483
+    [customer_address] => 12, something off.
+    [customer_contact_person_fullname] => new name
+    [customer_contact_person_phone] => 0904848049
+    [amount_paid] => 200000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 239
+    [from] => Friday, May 10, 2024
+    [apply_date] => Monday, May 6, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 3
+                    [service_name] => Photo Booth Hire
+                    [service_description] => (early equipment setup included)
+                    [quantity] => 5
+                    [price] => 200
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 3
+                    [price] => 80,000
+                )
+
+        )
+
+)
+Array
+(
+    [user_id] => 5
+    [form_action] => update_new_booking
+    [email] => abiola@yakubu.com
+    [time_start] => 20:48 PM
+    [time_end] => 23:50 PM
+    [customer_email] => wasge@egdg.djd
+    [customer_fullname] => full name
+    [customer_phone] => 9099038483
+    [customer_address] => 12, something off.
+    [customer_contact_person_fullname] => new name
+    [customer_contact_person_phone] => 0904848049
+    [amount_paid] => 200000000
+    [phone] => 2039832904
+    [fullname] => Abiola Sunday
+    [type_of_event] => Birthday Party
+    [number_of_guest] => 239
+    [from] => Friday, May 10, 2024
+    [apply_date] => Monday, May 6, 2024
+    [tax] => 
+    [message] => 
+    [discount] => 100000000
+    [services] => Array
+        (
+            [0] => Array
+                (
+                    [item_id] => 1
+                    [service_name] => Wedding DJ plus
+                    [service_description] => (we install the DJ equipment before your ceremony or after your wedding breakfast)
+                    [quantity] => 3
+                    [price] => 80,000
+                )
+
+            [1] => Array
+                (
+                    [item_id] => 4
+                    [service_name] => Karaoke Add-on
+                    [service_description] => Karaoke is a great alternative to a disco. It’s perfect for staff parties and children’s parties.
+                    [quantity] => 1
+                    [price] => 450,000,000
+                )
+
+            [2] => Array
+                (
+                    [item_id] => 3
+                    [service_name] => Photo Booth Hire
+                    [service_description] => (early equipment setup included)
+                    [quantity] => 5
+                    [price] => 200
+                )
+
+            [3] => Array
+                (
+                    [item_id] => 7
+                    [service_name] => Traffic controllers
+                    [service_description] => Controlling traffic and parking
+                    [quantity] => 1
+                    [price] => 50,000
+                )
+
+        )
+
+)

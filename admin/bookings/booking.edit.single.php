@@ -619,8 +619,8 @@
               ${selectedPrice}</td>
               <td>
                 <input type="hidden" name="item_id[]" value="`+selectedItem.item_id+`" />
-                <input type="hidden" value="1" id="quantity_original_`+selectedItem.item_id+`" name="quantity[]" />
-                <input type="number" min="1" value="1" id="quantity_calc_`+selectedItem.item_id+`"  oninput="handleQuantityChange(this.id, this.value)" />
+                <input type="hidden" value="`+selectedItem.quantity+`" id="quantity_original_`+selectedItem.item_id+`" name="quantity[]" />
+                <input type="number" min="1" value="`+selectedItem.quantity+`" id="quantity_calc_`+selectedItem.item_id+`"  oninput="handleQuantityChange(this.id, this.value)" />
               </td>
               <td> <span id="span_`+selectedItem.item_id+`">${totalPrice}</span></td>
               <td><button class="btn btn-square btn-danger" onclick="removeRow(this)" title="delete" type="button"><i class="fa fa-trash-o"></i></button> </td>

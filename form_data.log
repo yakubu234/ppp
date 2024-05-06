@@ -2414,3 +2414,69 @@ Array
         )
 
 )
+Array
+(
+    [0] => Array
+        (
+            [date_start] => 5/25/2024
+            [date_end] => 5/25/2024
+        )
+
+    [1] => Array
+        (
+            [date_start] => 5/17/2024
+            [date_end] => 5/17/2024
+        )
+
+    [2] => Array
+        (
+            [date_start] => 5/11/2024
+            [date_end] => 5/11/2024
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [date_start] => 5/25/2024
+            [date_end] => 5/25/2024
+        )
+
+    [1] => Array
+        (
+            [date_start] => 5/17/2024
+            [date_end] => 5/17/2024
+        )
+
+    [2] => Array
+        (
+            [date_start] => 5/11/2024
+            [date_end] => 5/11/2024
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [start] => 2024-05-25T21:20:00
+            [end] => 2024-05-25T00:21:00
+            [title] => Booked
+        )
+
+    [1] => Array
+        (
+            [start] => 2024-05-17T21:22:00
+            [end] => 2024-05-17T02:24:00
+            [title] => Booked
+        )
+
+    [2] => Array
+        (
+            [start] => 2024-05-11T21:23:00
+            [end] => 2024-05-11T01:24:00
+            [title] => Booked
+        )
+
+)
