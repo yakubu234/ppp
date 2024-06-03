@@ -1,5 +1,6 @@
 <?php
 include("../conn/database.php");
+error_reporting(E_ALL);
 
 
 if(!isset($_SESSION['obbsuid'])){
@@ -65,14 +66,14 @@ if(isset($_POST['form_type']) && $_POST['form_type'] == "files"){
         if (!empty($fileNames)) {
             insertFileNames($fileNames);
             $_SESSION['success'] = 'File uploaded successfully';
-            header("Refresh:0; url=$pageUrl");
+            // header("Refresh:0; url=$pageUrl");
         } else {  
             $_SESSION['errors'] =  'No files uploaded';
-            header("Refresh:0; url=$pageUrl");
+            // header("Refresh:0; url=$pageUrl");
         }
     } else {
         $_SESSION['errors'] =  'No files uploaded';
-        header("Refresh:0; url=$pageUrl");
+        // header("Refresh:0; url=$pageUrl");
     }
 }
 
@@ -102,10 +103,10 @@ if (isset($_FILES['file'])  && isset($_POST['form_type']) && $_POST['form_type']
 
         $stmt->execute();
         $_SESSION['success'] = 'File uploaded successfully';
-        header("Refresh:0; url=$pageUrl");
+        // header("Refresh:0; url=$pageUrl");
     } else {
         $_SESSION['errors'] =  'Error uploading file';
-        header("Refresh:0; url=$pageUrl");
+        // header("Refresh:0; url=$pageUrl");
     }
 }
 
