@@ -33,6 +33,8 @@ function insertFileNames($fileNames) {
 }
 
 if(isset($_POST['form_type']) && $_POST['form_type'] == "delete_image" ) {
+    file_put_contents('form_data.log', print_r($POST, true), FILE_APPEND | LOCK_EX);
+    file_put_contents('form_data.log', print_r($POST['id'], true), FILE_APPEND | LOCK_EX);
     echo $_POST['id'];
 
 }
