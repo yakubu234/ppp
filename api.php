@@ -1,7 +1,5 @@
 <?php 
 include("conn/database.php");
-include("mail.php");
-
 // Import PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
