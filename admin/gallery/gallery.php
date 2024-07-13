@@ -196,7 +196,7 @@
                     // Reload the page or remove the image from the DOM
                     location.reload();
                 } else {
-                    alert('Failed to delete the image.');
+                    alert('Failed to delete the image: ' + data.message);
                 }
             })
             .catch((error) => {
