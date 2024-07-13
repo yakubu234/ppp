@@ -149,7 +149,8 @@ if(isset($_POST['form_type']) && $_POST['form_type'] == "update_email"){
 
         // Save the updated configuration back to the file
         file_put_contents($configFilePath, implode(PHP_EOL, $config));
-        echo "i am here";
+        echo "<script>alert('the password has been added');</script>";
+        header("Refresh:1; url=$pageUrl");
 }
 
 

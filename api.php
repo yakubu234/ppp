@@ -259,6 +259,7 @@ function identifyInputType($input) {
 }
 
 function sendEmail($data) {
+    global $config;
     $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL); 
     $name = trim($data['name']);
     $subject = trim($data['subject']);
@@ -274,7 +275,7 @@ function sendEmail($data) {
         $mail->Host       = 'smtp.zohocloud.ca';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = MAIL_USERNAME;                     //SMTP username
-        $mail->Password   = MAIL_PASSWORD;                               //SMTP password
+        $mail->Password   = $config['MAIL_PASSWORD'];                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
         $mail->Port       = 587; //465                                   //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS` PHPMailer::ENCRYPTION_SMTPS;
 
@@ -307,9 +308,9 @@ function sendEmail($data) {
                         </html>';
 
         $mail->send();
-        echo 'Message has been sent';
+        echo 'Message has been sent'. $config['MAIL_PASSWORD'];
     } catch (Exception $e) {
         echo $e->getMessage();
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}".$config['MAIL_PASSWORD'];
     }
 }
