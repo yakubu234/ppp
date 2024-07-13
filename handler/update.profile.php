@@ -134,4 +134,9 @@ if(isset($_POST['form_type']) && $_POST['form_type'] == "profile_update_old"){
     
 }
 
+if(isset($_POST['form_type']) && $_POST['form_type'] == "update_email"){
+    echo  $password = $_POST['password'];    
+}
+
+
 ?>

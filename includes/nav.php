@@ -146,6 +146,7 @@
                     <ul class="sidebar-submenu">
                       <li><a href="../contact/contact.us.php">Contact us</a></li>
                       <li><a href="../gallery/gallery.data.php">Gallery</a></li>
+                      <li><a href="../profile/mail.data.php">Add Email Password</a></li>
                     </ul>
                   </li>
                     <?php

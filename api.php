@@ -279,7 +279,7 @@ function sendEmail($data) {
         $mail->Port       = 587; //465                                   //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS` PHPMailer::ENCRYPTION_SMTPS;
 
         //Recipients
-        $mail->setFrom(MAIL_USERNAME, 'Mailer');
+        $mail->setFrom(MAIL_USERNAME, $name);
         $mail->addAddress('yakubu.abiola@yahoo.com', 'Joe User');   
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'A message from '.$name;
@@ -290,7 +290,7 @@ function sendEmail($data) {
                             <body>
                                 <p>You have a message from '.$name .'</p>
                                 <p>Email: '.$email .'</p>
-                                <p>Message:</p>
+                                <h3 style="color:grey;">The Message</h3>
                                 <p>'.$message .'</p>
                             </body>
                         </html>';
