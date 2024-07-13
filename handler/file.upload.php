@@ -96,10 +96,8 @@ if (isset($_FILES['file'])  && isset($_POST['form_type']) && $_POST['form_type']
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':fileName', $fileName);
         $stmt->bindParam(':status', $status);
-
-        if(!empty($_POST['description'])){
-            $stmt->bindParam(':heading', $_POST['description']);
-        }
+        $stmt->bindParam(':heading', $_POST['description']?? ".");
+        
 
         $stmt->execute();
         $_SESSION['success'] = 'File uploaded successfully';
