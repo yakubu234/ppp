@@ -9,6 +9,29 @@
     <link id="color" rel="stylesheet" href="../../assets/css/color-1.css" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="../../assets/css/responsive.css">
+
+    <style>
+      .my-gallery figure {
+          position: relative;
+      }
+
+      .delete-icon {
+          position: absolute;
+          top: 5px;
+          left: 5px;
+          background: rgba(255, 255, 255, 0.7);
+          padding: 5px;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 16px;
+          color: red;
+          z-index: 10;
+      }
+
+      .delete-icon:hover {
+          background: rgba(255, 255, 255, 1);
+      }
+    </style>
   </head>
   <body> 
         
@@ -61,6 +84,10 @@
                           <h4>Portfolio Title</h4>
                           <p></p>
                         </figcaption>
+                        <!-- Delete icon overlay -->
+                        <div class="delete-icon" onclick="deleteImage('<?php echo $value['id']; ?>')">
+                            &#10060; <!-- Unicode character for a cross mark -->
+                        </div>
                       </figure>
                         <?php } ?>
                       
@@ -148,6 +175,36 @@
     <!-- Theme js-->
     <script src="../../assets/js/script.js"></script>
     <script src="../../assets/js/theme-customizer/customizer.js"></script>
+
+    <script>
+    function deleteImage(imageId) {
+        // Add your delete logic here
+        // For example, you can make an AJAX call to delete the image
+        if(confirm('Are you sure you want to delete this image?')) {
+            // AJAX request to delete the image
+            // You can use fetch, XMLHttpRequest or jQuery AJAX
+            fetch('delete_image.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: imageId }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Reload the page or remove the image from the DOM
+                    location.reload();
+                } else {
+                    alert('Failed to delete the image.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    }
+    </script>
     <?php include('../../error_handler.php'); ?>
     <!-- Plugin used-->
   </body>
