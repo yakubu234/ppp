@@ -2,9 +2,6 @@
 include("../conn/database.php");
 error_reporting(E_ALL);
 
-header('Content-Type: application/json');
-parse_str(file_get_contents('php://input'), $input);
-
 if(!isset($_SESSION['obbsuid'])){
     $_SESSION['message'] = "your session timed out";
     header("Refresh:0; url=../../logout.php");
@@ -35,14 +32,14 @@ function insertFileNames($fileNames) {
     }
 }
 
-if ($input['form_type'] === 'delete_image') {
+if (isset($_POST['form_type']) && $_POST['form_type'] === 'delete_image' && isset($_POST['id'])) {
 
-    if (!isset($input['id'])) {
+    if (!isset($_POST['id'])) {
         echo json_encode(['success' => false, 'message' => 'Invalid request']);
         exit;
     }
 
-    $imageId = $input['id'];
+    $imageId = $_POST['id'];
 
     try {
         // Fetch the image record from the database

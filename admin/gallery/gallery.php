@@ -181,14 +181,13 @@
         // Add your delete logic here
         // For example, you can make an AJAX call to delete the image
         if(confirm('Are you sure you want to delete this image?')) {
-            // AJAX request to delete the image
-            // You can use fetch, XMLHttpRequest or jQuery AJAX
+            const formData = new FormData();
+            formData.append('id', imageId);
+            formData.append('form_type', 'delete_image');
+
             fetch('../../handler/file.upload.php', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id: imageId , form_type: "delete_image"}),
+                method: 'POST', // Use POST instead of PUT
+                body: formData
             })
             .then(response => response.json())
             .then(data => {

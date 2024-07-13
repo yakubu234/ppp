@@ -41,18 +41,7 @@
                   <div class="card">
                     <div class="card-header pb-0">
                       <h3 style="float: left;" class="card-title mb-0">Add New Password here</h3>
-                        <div class="card-options">
-                        <form method="POST"action="../../handler/update.profile.php">
-                    
-                    <input type="hidden" value="profile_update" name="form_type" />
-                    <input type="hidden" value="inactive" name="status" />
-                    <input type="hidden" value="" name="fullname" />
-                    <input type="hidden" value="" name="username" />
-                    <input type="hidden" value="" name="email" />
-                    <input type="hidden" value="" name="phone" />
-                            <button style="float: right;" class="btn btn-square btn-danger" type="submit">
-                             <i data-feather="trash-2"></i> Delete Account  </button></form>
-                        </div>
+                       
                         <div style="clear: both;margin-bottom:20px;"></div> <!-- Clear floats -->
                     </div>
                     <div class="card-body">
