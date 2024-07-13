@@ -97,8 +97,6 @@ if (isset($_FILES['file'])  && isset($_POST['form_type']) && $_POST['form_type']
         $stmt->bindParam(':fileName', $fileName);
         $stmt->bindParam(':status', $status);
         $stmt->bindParam(':heading', $_POST['description']?? ".");
-        
-
         $stmt->execute();
         $_SESSION['success'] = 'File uploaded successfully';
         // header("Refresh:0; url=$pageUrl");
