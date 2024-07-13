@@ -2,7 +2,6 @@
 include("../conn/database.php");
 error_reporting(E_ALL);
 
-
 if(!isset($_SESSION['obbsuid'])){
     $_SESSION['message'] = "your session timed out";
     header("Refresh:0; url=../../logout.php");
@@ -15,8 +14,6 @@ $sql = "SELECT * FROM users";
 $query = $dbh->prepare($sql);
 $query->execute();
 $userList = $query->fetchAll(PDO::FETCH_ASSOC);
-
-error_reporting(E_ALL);
 
 $userId =$_SESSION['obbsuid'] ;
 
@@ -83,6 +80,7 @@ if (isset($_FILES['file'])  && isset($_POST['form_type']) && $_POST['form_type']
     $tempFilePath = $_FILES['file']['tmp_name'];
     $uploadDirectory = '../uploads/'; // Directory where files will be uploaded
     $targetFilePath = $uploadDirectory . basename($fileName);
+    $desc = $_POST['description'] ?? "." ;
     $status = "active";
     // Check if permissions were successfully changed
     if (!is_writable($uploadDirectory)) {
@@ -96,7 +94,7 @@ if (isset($_FILES['file'])  && isset($_POST['form_type']) && $_POST['form_type']
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':fileName', $fileName);
         $stmt->bindParam(':status', $status);
-        $stmt->bindParam(':heading', $_POST['description']?? ".");
+        $stmt->bindParam(':heading', $desc);
         $stmt->execute();
         $_SESSION['success'] = 'File uploaded successfully';
         // header("Refresh:0; url=$pageUrl");
