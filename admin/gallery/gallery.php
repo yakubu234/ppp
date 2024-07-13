@@ -183,12 +183,12 @@
         if(confirm('Are you sure you want to delete this image?')) {
             // AJAX request to delete the image
             // You can use fetch, XMLHttpRequest or jQuery AJAX
-            fetch('delete_image.php', {
+            fetch('../../handler/file.upload.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: imageId }),
+                body: JSON.stringify({ id: imageId , form_type: "delete_image"}),
             })
             .then(response => response.json())
             .then(data => {

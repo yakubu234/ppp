@@ -32,6 +32,11 @@ function insertFileNames($fileNames) {
     }
 }
 
+if(isset($_POST['form_type']) && $_POST['form_type'] == "delete_image" ) {
+    echo $_POST['id'];
+
+}
+
 // Function to handle file uploads
 if (isset($_POST['form_type']) && $_POST['form_type'] == "files") {
     if (isset($_FILES['files'])) {
