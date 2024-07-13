@@ -135,7 +135,12 @@ if(isset($_POST['form_type']) && $_POST['form_type'] == "profile_update_old"){
 }
 
 if(isset($_POST['form_type']) && $_POST['form_type'] == "update_email"){
-    echo  $password = $_POST['password'];    
+        // $config = include('config.php');
+        $config['MAIL_PASSWORD'] = $_POST['password'];
+        // Save the updated configuration back to the file
+        $configContent = '<?php return ' . var_export($config, true) . ';';
+        file_put_contents('config.php', $configContent);
+        echo "i am here";
 }
 
 
