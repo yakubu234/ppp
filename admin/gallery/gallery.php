@@ -184,7 +184,7 @@
             // AJAX request to delete the image
             // You can use fetch, XMLHttpRequest or jQuery AJAX
             fetch('../../handler/file.upload.php', {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },

@@ -32,12 +32,50 @@ function insertFileNames($fileNames) {
     }
 }
 
-if(isset($_POST['form_type']) && $_POST['form_type'] == "delete_image" ) {
-    file_put_contents('form_data.log', print_r($POST, true), FILE_APPEND | LOCK_EX);
-    file_put_contents('form_data.log', print_r($POST['id'], true), FILE_APPEND | LOCK_EX);
-    echo $_POST['id'];
+if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    header('Content-Type: application/json');
+    parse_str(file_get_contents('php://input'), $input);
 
+    if (!isset($input['id'])) {
+        echo json_encode(['success' => false, 'message' => 'Invalid request']);
+        exit;
+    }
+
+    $imageId = $input['id'];
+
+    try {
+        // Fetch the image record from the database
+        $sql = "SELECT img FROM gallery WHERE id = :id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(':id', $imageId, PDO::PARAM_INT);
+        $stmt->execute();
+        $image = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($image) {
+            $imagePath = '../../uploads/' . $image['img'];
+            // Delete the image file from the server
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+
+            // Delete the record from the database
+            $sql = "DELETE FROM gallery WHERE id = :id";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':id', $imageId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            echo json_encode(['success' => true, 'message' => 'Image deleted successfully']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Image not found']);
+        }
+    } catch (Exception $e) {
+        echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    }
+} else {
+    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
 }
+
+
 
 // Function to handle file uploads
 if (isset($_POST['form_type']) && $_POST['form_type'] == "files") {
