@@ -2,6 +2,9 @@
 include("../conn/database.php");
 error_reporting(E_ALL);
 
+header('Content-Type: application/json');
+parse_str(file_get_contents('php://input'), $input);
+
 if(!isset($_SESSION['obbsuid'])){
     $_SESSION['message'] = "your session timed out";
     header("Refresh:0; url=../../logout.php");
@@ -32,9 +35,7 @@ function insertFileNames($fileNames) {
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-    header('Content-Type: application/json');
-    parse_str(file_get_contents('php://input'), $input);
+if ($input['form_type'] === 'delete_image') {
 
     if (!isset($input['id'])) {
         echo json_encode(['success' => false, 'message' => 'Invalid request']);
@@ -71,10 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     } catch (Exception $e) {
         echo json_encode(['success' => false, 'message' => $e->getMessage()]);
     }
-} else {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
-}
-
+} 
 
 
 // Function to handle file uploads
