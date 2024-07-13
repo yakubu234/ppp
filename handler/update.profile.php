@@ -136,7 +136,7 @@ if(isset($_POST['form_type']) && $_POST['form_type'] == "profile_update_old"){
 
 if(isset($_POST['form_type']) && $_POST['form_type'] == "update_email"){
         // Load the existing configuration
-        $configFilePath = '../conn/config.txt';
+        $configFilePath = '../conn/configs.txt';
         $config = file($configFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
         // Update the password in the configuration array
