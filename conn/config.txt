@@ -1,0 +1,4 @@
+MAIL_USERNAME=app@sample.com
+MAIL_PASSWORD=testing@
+DB_HOST=localhost
+#

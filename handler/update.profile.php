@@ -135,11 +135,20 @@ if(isset($_POST['form_type']) && $_POST['form_type'] == "profile_update_old"){
 }
 
 if(isset($_POST['form_type']) && $_POST['form_type'] == "update_email"){
-        // $config = include('config.php');
-        $config['MAIL_PASSWORD'] = $_POST['password'];
+        // Load the existing configuration
+        $configFilePath = '../conn/config.txt';
+        $config = file($configFilePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        // Update the password in the configuration array
+        foreach ($config as &$line) {
+            if (strpos($line, 'MAIL_PASSWORD=') === 0) {
+                $line = 'MAIL_PASSWORD=' . $newPassword;
+                break;
+            }
+        }
+
         // Save the updated configuration back to the file
-        $configContent = '<?php return ' . var_export($config, true) . ';';
-        file_put_contents('config.php', $configContent);
+        file_put_contents($configFilePath, implode(PHP_EOL, $config));
         echo "i am here";
 }
 
