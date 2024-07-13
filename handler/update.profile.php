@@ -142,7 +142,7 @@ if(isset($_POST['form_type']) && $_POST['form_type'] == "update_email"){
         // Update the password in the configuration array
         foreach ($config as &$line) {
             if (strpos($line, 'MAIL_PASSWORD=') === 0) {
-                $line = 'MAIL_PASSWORD=' . $newPassword;
+                $line = 'MAIL_PASSWORD=' . $_POST['password'];
                 break;
             }
         }
