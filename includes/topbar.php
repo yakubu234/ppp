@@ -23,45 +23,7 @@
                   </ul>
                 </li>
               </ul>
-              <ul class="header-left"> 
-                <li class="onhover-dropdown"><span class="f-w-500">
-                    <svg>
-                      <use href="../../assets/svg/icon-sprite.svg#fill-bonus"></use>
-                    </svg>Bonus Ui</span>
-                  <ul class="onhover-show-div left-dropdown">
-                    <!-- <li><a href="scrollable.html">Scrollable</a></li>
-                    <li><a href="tree.html">Tree view</a></li> -->
-                  </ul>
-                </li>
-                <li class="onhover-dropdown"><span class="f-w-500">
-                    <svg>
-                      <use href="../../assets/svg/icon-sprite.svg#fill-Grid"></use>
-                    </svg>Level Menu</span>
-                  <ul class="onhover-show-div left-dropdown">
-                    <!-- <li><a href="add-products.html">Add Product</a></li>
-                    <li><a href="product.html">Product</a></li> -->
-                  </ul>
-                </li>
-                <li class="onhover-dropdown"> <span class="f-w-500">
-                    <svg>
-                      <use href="../../assets/svg/icon-sprite.svg#fill-Perk-Ui"></use>
-                    </svg>Project</span>
-                  <ul class="onhover-show-div left-dropdown">
-                    <!-- <li><a href="projects.html">Project List</a></li>
-                    <li><a href="projectcreate.html">Create new</a></li> -->
-                  </ul>
-                </li>
-                <li class="onhover-dropdown p-0"><span class="f-w-500">
-                    <svg>
-                      <use href="../../assets/svg/icon-sprite.svg#fill-bonus"></use>
-                    </svg>Blog</span>
-                  <ul class="onhover-show-div left-dropdown">
-                    <!-- <li><a href="blog.html">Blog Details</a></li>
-                    <li><a href="blog-single.html">Blog Single</a></li>
-                    <li><a href="add-post.html">Add Post</a></li> -->
-                  </ul>
-                </li>
-              </ul>
+              
             </div>
           </div>
           <div class="nav-right col-xxl-7 col-xl-6 col-auto box-col-6 pull-right right-header p-0 ms-auto">

@@ -1,5 +1,17 @@
 <?php 
 include("conn/database.php");
+include("mail.php");
+
+// Import PHPMailer classes
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader (assuming you have Composer installed)
+require 'mail/src/PHPMailer.php';
+require 'mail/src/SMTP.php';
+require 'mail/src/Exception.php';
+
 error_reporting(0);
 
 function formatTimeWithSeconds($timeString) {
@@ -109,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['name']) && $_GET['name'
     $recepient = "admin";
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL); 
     $name = trim($_POST['name']);
-    $subject = trim($_POST['subject']);
+    $subject = trim($_POST['subject']) ?? "message";
     $message = trim($_POST['message']);
     $isRead = 0;
 
@@ -123,6 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['name']) && $_GET['name'
         $query->bindParam(':subject', $subject, PDO::PARAM_STR);
         $query->bindParam(':is_read', $isRead, PDO::PARAM_NULL);
         
+        sendEmail($_POST); // send email to the lioracity email.
         if($query->execute() === TRUE){
             file_put_contents('form_data.log', print_r($_POST, true), FILE_APPEND | LOCK_EX);
             $response = ['success' => true, 'message' => 'Form data processed successfully', 'data' => "your message is received, we will get back shortly"];
@@ -165,6 +178,75 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['name']) && $_GET['name'
 }
 
 
+function generateCaptcha()
+{
+    //custom function for getting headers if not available in php
+    if (!function_exists('getallheaders')) {
+        function getallheaders() {
+            $headers = [];
+            foreach ($_SERVER as $name => $value) {
+                if (substr($name, 0, 5) == 'HTTP_') {
+                    $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+                }
+            }
+            return $headers;
+        }
+    }
+
+    // Get all headers
+    $headers = getallheaders();
+    $captchaKey = isset($headers['captcha-key']) ? $headers['captcha-key'] : null;
+
+    // Get the form data generate validate
+    $type = isset($_POST['type']) ? $_POST['type'] : null;
+
+    // Check if captcha-key or type is missing
+    if (!$captchaKey || !$type) {
+        http_response_code(400);
+        echo json_encode(['error' => 'Missing captcha-key or type']);
+        exit;
+    }
+
+    if($type = 'generate'){
+        $code = generateCaptchaText();
+        $_SESSION[$captchaKey] = $code; // set the captcha into a session with the captcha-key header
+        http_response_code(201);
+        echo json_encode(['success' => 'Generated successfully','data' => $code]);
+        exit;
+    }
+
+    // Validate the captcha-key
+    if ($type = 'validate' && $captchaKey == $_SESSION[$captchaKey]) {
+        $userCode = isset($_POST['code']) ? $_POST['code'] : null;
+        $code = $_SESSION[$captchaKey];
+        if($userCode === $code){
+            http_response_code(200);
+            echo json_encode(['success' => 'Valid captcha-key']);
+            exit;
+        }
+
+        http_response_code(400);
+        echo json_encode(['error' => 'Incorrect captcha-code']);
+        exit;
+    }
+
+    http_response_code(400);
+    echo json_encode(['error' => 'Incorrect captha code supplied']);
+    exit;
+
+
+}
+
+function generateCaptchaText($length = 6) {
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
 function identifyInputType($input) {
     // Check if input is a valid email address
     if (filter_var($input, FILTER_VALIDATE_EMAIL) !== false) {
@@ -176,4 +258,60 @@ function identifyInputType($input) {
     }
     // If input doesn't match email or phone number format, assume it's a regular string
     return 'booking_id';
+}
+
+function sendEmail($data) {
+    $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL); 
+    $name = trim($data['name']);
+    $subject = trim($data['subject']);
+    $message = trim($data['message']);
+
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.zohocloud.ca';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = MAIL_USERNAME;                     //SMTP username
+        $mail->Password   = MAIL_PASSWORD;                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+        $mail->Port       = 587; //465                                   //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS` PHPMailer::ENCRYPTION_SMTPS;
+
+        //Recipients
+        $mail->setFrom(MAIL_USERNAME, 'Mailer');
+        $mail->addAddress('yakubu.abiola@yahoo.com', 'Joe User');   
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'A message from '.$name;
+        $mail->Body    = '<html>
+                            <head>
+                            <title></title>
+                            </head>
+                            <body>
+                                <p>You have a message from '.$name .'</p>
+                                <p>Email: '.$email .'</p>
+                                <p>Message:</p>
+                                <p>'.$message .'</p>
+                            </body>
+                        </html>';
+        $mail->AltBody = '<html>
+                            <head>
+                            <title></title>
+                            </head>
+                            <body>
+                                <p>You have a message from '.$name .'</p>
+                                <p>Email: '.$email .'</p>
+                                <p>Message:</p>
+                                <p>'.$message .'</p>
+                            </body>
+                        </html>';
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo $e->getMessage();
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
 }

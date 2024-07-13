@@ -1,0 +1,21 @@
+<script>
+    $.ajax({
+    url: 'validate.php',
+    type: 'POST',
+    headers: {
+        'captcha-key': 'your_captcha_key_here'
+    },
+    data: {
+        type: 'your_type_value_here'
+    },
+    success: function(response) {
+        console.log(response);
+    },
+    error: function(xhr) {
+        console.error(xhr.responseText);
+    }
+});
+
+
+// https://codepen.io/ahsanrathore/pen/wKMZeJ
+</script>
