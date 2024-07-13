@@ -33,44 +33,53 @@ function insertFileNames($fileNames) {
 }
 
 // Function to handle file uploads
-if(isset($_POST['form_type']) && $_POST['form_type'] == "files"){
+if (isset($_POST['form_type']) && $_POST['form_type'] == "files") {
     if (isset($_FILES['files'])) {
         $fileNames = [];
-        $fileCount = 1;
+        $fileCount = count($_FILES['files']['name']);
+        $uploadDirectory = '../uploads/';
 
-        if (isset($_FILES['files']) && is_array($_FILES['files']['name'])) {
-            $fileCount = count($_FILES['files']['name']);
+        if (!is_writable($uploadDirectory)) {
+            $permissions = 0777;
+            chmod($uploadDirectory, $permissions);
         }
- 
+
         for ($i = 0; $i < $fileCount; $i++) {
-            $fileName = $_FILES['files']['name'][$i];
-            $tempFilePath = $_FILES['files']['tmp_name'][$i];
-            $uploadDirectory = '../uploads/'; // Directory where files will be uploaded
-            $targetFilePath = $uploadDirectory . basename($fileName);
+            if ($_FILES['files']['error'][$i] == UPLOAD_ERR_OK) {
+                $fileName = $_FILES['files']['name'][$i];
+                $tempFilePath = $_FILES['files']['tmp_name'][$i];
+                $targetFilePath = $uploadDirectory . basename($fileName);
 
-            if (!is_writable($uploadDirectory)) {
-                $permissions = 0777; 
-                exec("chmod -R {$permissions} {$uploadDirectory}");
-            }
-
-            if (move_uploaded_file($tempFilePath, $targetFilePath)) {
-                $fileNames[] = $fileName;
+                if (move_uploaded_file($tempFilePath, $targetFilePath)) {
+                    $fileNames[] = $fileName;
+                } else {
+                    // Handle file upload error
+                    $_SESSION['errors'] = 'Failed to move uploaded file: ' . $fileName;
+                    header("Refresh:0; url=$pageUrl");
+                    exit();
+                }
             } else {
                 // Handle file upload error
+                $_SESSION['errors'] = 'Error uploading file: ' . $_FILES['files']['name'][$i];
+                header("Refresh:0; url=$pageUrl");
+                exit();
             }
         }
 
         if (!empty($fileNames)) {
             insertFileNames($fileNames);
-            $_SESSION['success'] = 'File uploaded successfully';
-            // header("Refresh:0; url=$pageUrl");
-        } else {  
-            $_SESSION['errors'] =  'No files uploaded';
-            // header("Refresh:0; url=$pageUrl");
+            $_SESSION['success'] = 'Files uploaded successfully';
+            header("Refresh:0; url=$pageUrl");
+            exit();
+        } else {
+            $_SESSION['errors'] = 'No files uploaded';
+            header("Refresh:0; url=$pageUrl");
+            exit();
         }
     } else {
-        $_SESSION['errors'] =  'No files uploaded';
-        // header("Refresh:0; url=$pageUrl");
+        $_SESSION['errors'] = 'No files uploaded';
+        header("Refresh:0; url=$pageUrl");
+        exit();
     }
 }
 
@@ -97,10 +106,10 @@ if (isset($_FILES['file'])  && isset($_POST['form_type']) && $_POST['form_type']
         $stmt->bindParam(':heading', $desc);
         $stmt->execute();
         $_SESSION['success'] = 'File uploaded successfully';
-        // header("Refresh:0; url=$pageUrl");
+        header("Refresh:0; url=$pageUrl");
     } else {
         $_SESSION['errors'] =  'Error uploading file';
-        // header("Refresh:0; url=$pageUrl");
+        header("Refresh:0; url=$pageUrl");
     }
 }
 

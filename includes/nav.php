@@ -308,7 +308,7 @@
                             <div class="modal-body compose-modal">
                             <div class="mb-3">
                               <label class="form-label" for="formFileMultiple">Choose Multiple files</label>
-                              <input class="form-control" id="formFileMultiple" name="files" type="file" multiple="multiple">
+                              <input class="form-control" id="formFileMultiple" name="files[]" type="file" multiple="multiple">
                             </div>
                               
                             </div>
