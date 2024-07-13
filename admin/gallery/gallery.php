@@ -18,7 +18,7 @@
       .delete-icon {
           position: absolute;
           top: 5px;
-          left: 5px;
+          left: 10px;
           background: rgba(255, 255, 255, 0.7);
           padding: 5px;
           border-radius: 50%;
@@ -86,7 +86,7 @@
                         </figcaption>
                         <!-- Delete icon overlay -->
                         <div class="delete-icon" onclick="deleteImage('<?php echo $value['id']; ?>')">
-                            &#10060; <!-- Unicode character for a cross mark -->
+                            <i class="fa fa-trash" ></i> <!-- Unicode character for a cross mark -->
                         </div>
                       </figure>
                         <?php } ?>
